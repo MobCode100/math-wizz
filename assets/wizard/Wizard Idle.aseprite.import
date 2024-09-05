@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dje2n2o4frdnw"
+path="res://.godot/imported/Wizard Idle.aseprite-6ca5827af4697e65fc099762d107205f.res"
+
+[deps]
+
+source_file="res://assets/wizard/Wizard Idle.aseprite"
+dest_files=["res://.godot/imported/Wizard Idle.aseprite-6ca5827af4697e65fc099762d107205f.res"]
+
+[params]
+

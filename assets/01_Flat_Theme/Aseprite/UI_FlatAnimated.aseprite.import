@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dx4niw806auk1"
+path="res://.godot/imported/UI_FlatAnimated.aseprite-35e77eb216a62eef6082821171041cc9.res"
+
+[deps]
+
+source_file="res://assets/01_Flat_Theme/Aseprite/UI_FlatAnimated.aseprite"
+dest_files=["res://.godot/imported/UI_FlatAnimated.aseprite-35e77eb216a62eef6082821171041cc9.res"]
+
+[params]
+
