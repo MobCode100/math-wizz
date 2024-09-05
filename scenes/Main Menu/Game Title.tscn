@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://carr6avioqn82"]
+
+[ext_resource type="Texture2D" uid="uid://css0x8ef3bgki" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_Banner02a.png" id="1_mdfvi"]
+[ext_resource type="FontFile" uid="uid://c53kogtyjwsss" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_xqmo0"]
+
+[node name="GameTitle" type="Node2D"]
+
+[node name="UiFlatBanner02a" type="Sprite2D" parent="."]
+position = Vector2(-441, -353.5)
+scale = Vector2(63.0938, 90.65)
+texture = ExtResource("1_mdfvi")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -1939.0
+offset_top = -1150.0
+offset_right = 1051.0
+offset_bottom = 102.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_xqmo0")
+theme_override_font_sizes/font_size = 300
+text = "Game Wizz"
+horizontal_alignment = 1
+vertical_alignment = 1
