@@ -12,5 +12,5 @@ func _process(delta):
 
 
 func _on_menu_button_2_pressed():
-	get_tree().change_scene_to_file("res://scenes/Main Menu/Game Mode.tscn")
+	get_tree().change_scene_to_file("res://scenes/chapter/sample.tscn")
 	#pass # Replace with function body.

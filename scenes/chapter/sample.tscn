@@ -383,7 +383,7 @@ text = "confirm"
 position = Vector2(152, 10)
 collision_layer = 1
 first_number = 12
-operator = "-"
+operator = "/"
 main_scene = NodePath("..")
 
 [node name="Enemy2" parent="." node_paths=PackedStringArray("main_scene") instance=ExtResource("3_yqi0q")]
