@@ -4,13 +4,13 @@ extends Button
 	get: return answer
 	set(value):
 		answer = value
-		$".".text = str(answer)
+		self.text = str(answer)
 @export var player:Node
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$".".text = str(answer)
+	self.text = str(answer)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,4 +21,5 @@ func _process(delta: float) -> void:
 func _pressed() -> void:
 	print("pressed")
 	print(answer)
+	
 	player.selected_answer = answer
