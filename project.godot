@@ -27,6 +27,10 @@ window/vsync/vsync_mode=0
 
 project/assembly_name="First Game"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+
 [input]
 
 jump={
