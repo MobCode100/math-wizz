@@ -1,17 +1,43 @@
-[gd_scene load_steps=6 format=3 uid="uid://doj7qr6tw57i0"]
+[gd_scene load_steps=14 format=3 uid="uid://doj7qr6tw57i0"]
 
 [ext_resource type="Texture2D" uid="uid://cykhetrvil23v" path="res://assets/wizard char.png" id="1_bcis6"]
 [ext_resource type="Script" path="res://scenes/Characters/wizard.gd" id="1_k8p31"]
+[ext_resource type="Texture2D" uid="uid://d17edwqeelfx8" path="res://assets/AnimationSheet_Character.png" id="2_cchmq"]
+[ext_resource type="Texture2D" uid="uid://c341m8pc5yqt2" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_BarFill01e.png" id="4_fr7gi"]
+[ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="5_f2u60"]
+[ext_resource type="Script" path="res://scenes/chapter/answer.gd" id="6_c463f"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j6qk5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj28t"]
 atlas = ExtResource("1_bcis6")
-region = Rect2(10, 0, 54, 65)
+region = Rect2(10, 0, 44, 65)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xpsoq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj28t")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sora"]
+atlas = ExtResource("2_cchmq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibjx1"]
+atlas = ExtResource("2_cchmq")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jpu42"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j6qk5")
+"texture": SubResource("AtlasTexture_4sora")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibjx1")
 }],
 "loop": true,
 "name": &"idle",
@@ -19,18 +45,117 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wpdlf"]
-radius = 5.0
+radius = 4.0
 height = 22.0
 
-[node name="Wizard" type="CharacterBody2D"]
-script = ExtResource("1_k8p31")
+[sub_resource type="CircleShape2D" id="CircleShape2D_8lpuh"]
+radius = 29.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -1)
+[node name="Wizard" type="CharacterBody2D" node_paths=PackedStringArray("selected_sprite")]
+script = ExtResource("1_k8p31")
+selected_sprite = [NodePath("gray_wizard"), NodePath("blue_wizard")]
+
+[node name="gray_wizard" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(0.604857, 0.684195)
+sprite_frames = SubResource("SpriteFrames_xpsoq")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="blue_wizard" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(0.646701, 0.736779)
 sprite_frames = SubResource("SpriteFrames_jpu42")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5, 3)
 shape = SubResource("CapsuleShape2D_wpdlf")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_8lpuh")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1, 48)
+zoom = Vector2(4, 4)
+
+[node name="Score" type="Label" parent="."]
+offset_left = -138.0
+offset_top = -28.0
+offset_right = -83.0
+offset_bottom = -5.0
+theme_override_font_sizes/font_size = 10
+
+[node name="Health" type="Label" parent="."]
+offset_left = 91.0
+offset_top = -31.0
+offset_right = 134.0
+offset_bottom = -8.0
+theme_override_font_sizes/font_size = 10
+text = "lives ? / ?"
+
+[node name="question" type="Node2D" parent="."]
+visible = false
+
+[node name="UiFlatBarFill01e" type="Sprite2D" parent="question"]
+position = Vector2(9.53674e-07, 62)
+scale = Vector2(8.6875, 8)
+texture = ExtResource("4_fr7gi")
+
+[node name="Label" type="Label" parent="question"]
+offset_left = -139.0
+offset_top = 51.0
+offset_right = 137.0
+offset_bottom = 72.0
+theme_override_fonts/font = ExtResource("5_f2u60")
+text = "no question"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="question"]
+offset_left = -138.0
+offset_top = 81.0
+offset_right = 136.0
+offset_bottom = 122.0
+size_flags_vertical = 3
+columns = 5
+
+[node name="answer A" type="Button" parent="question/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_f2u60")
+text = "12"
+script = ExtResource("6_c463f")
+
+[node name="answer B" type="Button" parent="question/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_f2u60")
+text = "23"
+script = ExtResource("6_c463f")
+
+[node name="answer C" type="Button" parent="question/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_f2u60")
+text = "12"
+script = ExtResource("6_c463f")
+
+[node name="answer D" type="Button" parent="question/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_f2u60")
+text = "12"
+script = ExtResource("6_c463f")
+
+[node name="MarginContainer" type="MarginContainer" parent="question/GridContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="confirm" type="Button" parent="question/GridContainer/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_f2u60")
+text = "confirm"
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="pressed" from="question/GridContainer/MarginContainer/confirm" to="." method="_on_confirm_pressed"]

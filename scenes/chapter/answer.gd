@@ -5,13 +5,12 @@ extends Button
 	set(value):
 		answer = value
 		self.text = str(answer)
-@export var player:Node
+@onready var player:Node = $"../../.."
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	self.text = str(answer)
-
+	self.text = "%2d" % answer
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

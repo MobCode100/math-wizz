@@ -15,6 +15,10 @@ run/main_scene="res://scenes/Auth/Login.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[aseprite]
+
+import/import_plugin/default_automatic_importer="SpriteFrames"
+
 [autoload]
 
 Music="*res://scenes/music.tscn"
