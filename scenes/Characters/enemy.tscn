@@ -50,6 +50,7 @@ script = ExtResource("1_kkwod")
 position = Vector2(1, -6)
 sprite_frames = SubResource("SpriteFrames_ryc0y")
 autoplay = "default"
+flip_h = true
 
 [node name="physic mask" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
