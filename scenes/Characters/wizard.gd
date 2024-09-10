@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
 @export var selected_answer:int
 @export var selected_sprite: Array[AnimatedSprite2D]
@@ -97,9 +97,9 @@ func _on_confirm_pressed() -> void:
 		update_health()
 		update_health_ui()
 		if(health == 0):
-			go_to_main_menu()
-			
-			#player.die()
+			restart_level()
+			#go_to_main_menu()
+
 
 
 func not_enemy(body:Node2D)->bool : return "ENEMY" not in body || !body.ENEMY
@@ -131,6 +131,7 @@ func enable_button() : confirm_button.disabled = false
 func update_health() : health = max(health -1 , 0)
 func update_health_ui(): health_ui.text = "lives : %d / %d" % [health,MAX_HEALTH]
 func go_to_main_menu(): get_tree().change_scene_to_file("res://scenes/Main Menu/Main Menu.tscn")
+func restart_level(): get_tree().reload_current_scene()
 func wait(seconds:float): await get_tree().create_timer(seconds).timeout
 func kill_enemy(): 
 	if(enemy == null): return

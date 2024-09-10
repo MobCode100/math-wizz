@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d17edwqeelfx8" path="res://assets/AnimationSheet_Character.png" id="2_cchmq"]
 [ext_resource type="Texture2D" uid="uid://c341m8pc5yqt2" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_BarFill01e.png" id="4_fr7gi"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="5_f2u60"]
-[ext_resource type="Script" path="res://scenes/chapter/answer.gd" id="6_c463f"]
+[ext_resource type="Script" path="res://scenes/Characters/answer.gd" id="6_c463f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yj28t"]
 atlas = ExtResource("1_bcis6")
@@ -49,7 +49,7 @@ radius = 4.0
 height = 22.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8lpuh"]
-radius = 29.0
+radius = 48.0
 
 [node name="Wizard" type="CharacterBody2D" node_paths=PackedStringArray("selected_sprite")]
 script = ExtResource("1_k8p31")

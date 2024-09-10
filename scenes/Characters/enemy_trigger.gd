@@ -41,6 +41,8 @@ func generateOptions(answer:int,option_len:int) -> Array :
 		if (i == answer_position): answers.append(answer)
 		else:
 			var offset = rng.randi_range(-question_range,question_range)
+			while((answer + offset) <= 0 || (answer + offset) in answers):
+				offset = rng.randi_range(-question_range,question_range)
 			var false_answer = max(answer + offset,0)
 			answers.append(false_answer)
 	return answers
