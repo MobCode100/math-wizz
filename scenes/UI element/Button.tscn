@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://43sc3jjy8c20"]
+
+[ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="1_av51d"]
+[ext_resource type="Texture2D" uid="uid://ngr0smldkfwl" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_Button02a_3.png" id="1_my6hh"]
+[ext_resource type="Texture2D" uid="uid://dm1eksa8tkj" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_Button02a_1.png" id="2_b0rxf"]
+[ext_resource type="Texture2D" uid="uid://tqnpg5bicvdw" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_Button02a_4.png" id="2_wc16o"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5kme8"]
+texture = ExtResource("1_my6hh")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_16cdc"]
+texture = ExtResource("2_b0rxf")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vxfgg"]
+texture = ExtResource("2_wc16o")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 10.0
+
+[node name="Button" type="Button"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.5
+offset_top = -35.0
+offset_right = 69.5
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.654902)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 0.392157)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 0.694118)
+theme_override_fonts/font = ExtResource("1_av51d")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5kme8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_16cdc")
+theme_override_styles/normal = SubResource("StyleBoxTexture_vxfgg")
+text = "text"

@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://doj7qr6tw57i0"]
+[gd_scene load_steps=15 format=3 uid="uid://doj7qr6tw57i0"]
 
 [ext_resource type="Texture2D" uid="uid://cykhetrvil23v" path="res://assets/wizard char.png" id="1_bcis6"]
 [ext_resource type="Script" path="res://scenes/Characters/wizard.gd" id="1_k8p31"]
 [ext_resource type="Texture2D" uid="uid://d17edwqeelfx8" path="res://assets/AnimationSheet_Character.png" id="2_cchmq"]
 [ext_resource type="Texture2D" uid="uid://c341m8pc5yqt2" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_BarFill01e.png" id="4_fr7gi"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="5_f2u60"]
+[ext_resource type="PackedScene" uid="uid://43sc3jjy8c20" path="res://scenes/UI element/Button.tscn" id="6_af8vh"]
 [ext_resource type="Script" path="res://scenes/Characters/answer.gd" id="6_c463f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yj28t"]
@@ -54,6 +55,7 @@ radius = 48.0
 [node name="Wizard" type="CharacterBody2D" node_paths=PackedStringArray("selected_sprite")]
 script = ExtResource("1_k8p31")
 selected_sprite = [NodePath("gray_wizard"), NodePath("blue_wizard")]
+sprite_index = 0
 
 [node name="gray_wizard" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -79,7 +81,7 @@ shape = SubResource("CircleShape2D_8lpuh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1, 37)
-zoom = Vector2(4, 4)
+zoom = Vector2(2, 2)
 
 [node name="Score" type="Label" parent="."]
 offset_left = -138.0
@@ -97,65 +99,94 @@ theme_override_font_sizes/font_size = 10
 text = "lives ? / ?"
 
 [node name="question" type="Node2D" parent="."]
-visible = false
 
 [node name="UiFlatBarFill01e" type="Sprite2D" parent="question"]
-position = Vector2(9.53674e-07, 62)
+position = Vector2(-8, 128)
 scale = Vector2(8.6875, 8)
 texture = ExtResource("4_fr7gi")
 
 [node name="Label" type="Label" parent="question"]
-offset_left = -139.0
-offset_top = 51.0
-offset_right = 137.0
-offset_bottom = 72.0
+offset_left = -145.0
+offset_top = 118.0
+offset_right = 131.0
+offset_bottom = 139.0
 theme_override_fonts/font = ExtResource("5_f2u60")
 text = "no question"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="question"]
-offset_left = -138.0
-offset_top = 81.0
-offset_right = 136.0
-offset_bottom = 122.0
-size_flags_vertical = 3
-columns = 5
-
-[node name="answer A" type="Button" parent="question/GridContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("5_f2u60")
-text = "12"
+[node name="answer A" parent="question" instance=ExtResource("6_af8vh")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 185.0
+offset_top = 50.0
+offset_right = 235.0
+offset_bottom = 80.0
+grow_horizontal = 1
+grow_vertical = 1
+text = "100"
 script = ExtResource("6_c463f")
 
-[node name="answer B" type="Button" parent="question/GridContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("5_f2u60")
-text = "23"
+[node name="answer B" parent="question" instance=ExtResource("6_af8vh")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 233.0
+offset_top = 87.0
+offset_right = 283.0
+offset_bottom = 117.0
+grow_horizontal = 1
+grow_vertical = 1
+text = "100"
 script = ExtResource("6_c463f")
 
-[node name="answer C" type="Button" parent="question/GridContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("5_f2u60")
-text = "12"
+[node name="answer C" parent="question" instance=ExtResource("6_af8vh")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 183.0
+offset_top = 122.0
+offset_right = 233.0
+offset_bottom = 152.0
+grow_horizontal = 1
+grow_vertical = 1
+text = "100"
 script = ExtResource("6_c463f")
 
-[node name="answer D" type="Button" parent="question/GridContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("5_f2u60")
-text = "12"
+[node name="answer D" parent="question" instance=ExtResource("6_af8vh")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 141.0
+offset_top = 85.0
+offset_right = 191.0
+offset_bottom = 115.0
+grow_horizontal = 1
+grow_vertical = 1
+text = "100"
 script = ExtResource("6_c463f")
 
-[node name="MarginContainer" type="MarginContainer" parent="question/GridContainer"]
-layout_mode = 2
+[node name="MarginContainer" type="MarginContainer" parent="question"]
+offset_left = 149.0
+offset_top = 158.0
+offset_right = 263.0
+offset_bottom = 188.0
 theme_override_constants/margin_left = 10
 
-[node name="confirm" type="Button" parent="question/GridContainer/MarginContainer"]
+[node name="confirm" parent="question/MarginContainer" instance=ExtResource("6_af8vh")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_f2u60")
-text = "confirm"
+text = "Confirm"
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="pressed" from="question/GridContainer/MarginContainer/confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="question/MarginContainer/confirm" to="." method="_on_confirm_pressed"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=4 uid="uid://dow4wfydymooy"]
+[gd_scene load_steps=22 format=4 uid="uid://dow4wfydymooy"]
 
 [ext_resource type="Script" path="res://Main Menu.gd" id="1_11ia6"]
 [ext_resource type="Texture2D" uid="uid://css0x8ef3bgki" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_Banner02a.png" id="2_woivj"]
 [ext_resource type="FontFile" uid="uid://c53kogtyjwsss" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_4bjmt"]
+[ext_resource type="PackedScene" uid="uid://43sc3jjy8c20" path="res://scenes/UI element/Button.tscn" id="3_8mgcx"]
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://assets/sprites/world_tileset.png" id="4_ktjjl"]
 [ext_resource type="Texture2D" uid="uid://d17edwqeelfx8" path="res://assets/AnimationSheet_Character.png" id="5_ix6ud"]
 
@@ -385,20 +386,21 @@ offset_right = 146.0
 offset_bottom = 98.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 10
 
-[node name="Play" type="MenuButton" parent="VBoxContainer"]
+[node name="Play" parent="VBoxContainer" instance=ExtResource("3_8mgcx")]
 layout_mode = 2
 text = "Play"
 
-[node name="Academy" type="MenuButton" parent="VBoxContainer"]
+[node name="Button" parent="VBoxContainer" instance=ExtResource("3_8mgcx")]
 layout_mode = 2
-text = "Acedemy"
+text = "Academy"
 
-[node name="Mage Tower" type="MenuButton" parent="VBoxContainer"]
+[node name="Button2" parent="VBoxContainer" instance=ExtResource("3_8mgcx")]
 layout_mode = 2
 text = "Mage Tower"
 
-[node name="Settings" type="MenuButton" parent="VBoxContainer"]
+[node name="Button3" parent="VBoxContainer" instance=ExtResource("3_8mgcx")]
 layout_mode = 2
 text = "Settings"
 
@@ -460,5 +462,3 @@ text = "+"
 position = Vector2(211, 479)
 sprite_frames = SubResource("SpriteFrames_ul5g8")
 autoplay = "default"
-
-[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_menu_button_2_pressed"]

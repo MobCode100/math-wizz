@@ -5,7 +5,7 @@ extends Button
 	set(value):
 		answer = value
 		self.text = str(answer)
-@onready var player:Node = $"../../.."
+@onready var player:Node = $"../.."
 
 
 # Called when the node enters the scene tree for the first time.

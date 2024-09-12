@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Wizard
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
@@ -40,19 +40,20 @@ func _on_ready() -> void:
 	sprite.visible = true
 	update_score_ui()
 	update_health_ui()
+	hide_question()
 
 
 # TODO: export to player please
 @onready var option_list:Array[Node] = [
-	$"question/GridContainer/answer A",
-	$"question/GridContainer/answer B",
-	$"question/GridContainer/answer C",
-	$"question/GridContainer/answer D",
+	$"question/answer A",
+	$"question/answer B",
+	$"question/answer C",
+	$"question/answer D",
 ]
 @onready var question_label:Label = $question/Label
 @onready var question_ui:Node2D = $question
 @onready var score_label:Label = $Score
-@onready var confirm_button:Button = $question/GridContainer/MarginContainer/confirm
+@onready var confirm_button:Button = $question/MarginContainer/confirm
 @onready var health_ui:Label = $Health
 
 @export var MAX_HEALTH = 3
@@ -60,17 +61,15 @@ func _on_ready() -> void:
 
 var score = 0
 var health = MAX_HEALTH
-var correct_answer = -1
 
-var enemy:Node2D
+var enemy:Enemy
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if(not_enemy(body)): return
 	enemy = body
 	show_question()
-	update_options(enemy.generatedOptions)
+	update_options(enemy.generateOptions(len(option_list)))
 	update_question(enemy.question)
-	correct_answer = enemy.correct_answer
 	
 
 
@@ -81,7 +80,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	enemy = null
 
 func _on_confirm_pressed() -> void:
-	var correct =  selected_answer == correct_answer
+	var correct = enemy.isAnswerCorrect(selected_answer)
 	if(correct):
 		display_answer_is_correct()
 		update_score(enemy.operator)
@@ -109,10 +108,10 @@ func show_question(): question_ui.visible = true
 func display_answer_is_correct(): question_label.text = "correct"
 func display_answer_is_incorrect(): question_label.text = "incorrect"
 
-func update_options(generatedOptions:Array):
-		for i in range(0,max(len(option_list),4)):
-			print(generatedOptions[i])
-			option_list[i].answer = str(generatedOptions[i]) 
+func update_options(generatedOptions:Array[int]):
+	for i in range(0,len(option_list)):
+		print(generatedOptions[i])
+		option_list[i].answer = str(generatedOptions[i]) 
 
 func CalcScore(operator:String) -> int:
 	match operator:
