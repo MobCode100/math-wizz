@@ -1,6 +1,3 @@
-# First game in Godot
-Project files for our video on making your first game in Godot.
+# Math Wizz
 
-Check out the videos on the [Brackeys YouTube Channel](http://youtube.com/brackeys).
-
-Everything is free to use, also commercially (public domain).
+A game for kids to educate themselves of elementary math. 
