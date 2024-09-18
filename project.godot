@@ -33,7 +33,7 @@ project/assembly_name="First Game"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/table_container/plugin.cfg")
 
 [input]
 

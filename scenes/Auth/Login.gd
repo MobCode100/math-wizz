@@ -11,5 +11,10 @@ func _process(delta):
 	pass
 
 
-func _on_button_pressed():
+func _on_button_pressed(): 
+	
+	if $VBoxContainer/usernameInput.text == "admin":
+		get_tree().change_scene_to_file("res://scenes/Main Menu/Admin.tscn")
+		return
+	
 	get_tree().change_scene_to_file("res://scenes/Main Menu/Main Menu.tscn")
