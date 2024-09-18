@@ -462,3 +462,5 @@ text = "+"
 position = Vector2(211, 479)
 sprite_frames = SubResource("SpriteFrames_ul5g8")
 autoplay = "default"
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
