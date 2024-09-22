@@ -59,7 +59,9 @@ func isAnswerCorrect(answer:int) :
 	return correct_answer == answer
 
 func die():
-	await get_tree().create_timer(0.5).timeout
+	$AnimatedSprite2D.play("hit")
+	$AudioStreamPlayer2D.play()
+	await $AnimatedSprite2D.animation_finished
 	self.queue_free()
 
 func _physics_process(delta: float) -> void:

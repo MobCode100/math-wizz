@@ -5,7 +5,7 @@ extends Button
 	set(value):
 		answer = value
 		self.text = str(answer)
-@onready var player:Node = $"../.."
+@onready var player:Node = $"../../.."
 
 
 # Called when the node enters the scene tree for the first time.
@@ -21,4 +21,5 @@ func _pressed() -> void:
 	print("pressed")
 	print(answer)
 	
-	player.selected_answer = answer
+	#player.selected_answer = answer
+	player.emit_signal("answer_change",answer)

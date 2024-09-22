@@ -2,10 +2,12 @@ extends CharacterBody2D
 class_name Wizard
 
 const SPEED = 200.0
-const JUMP_VELOCITY = -300.0
-@export var selected_answer:int
+const JUMP_VELOCITY = -400.0
+@export var selected_answer:int = -1
 @export var selected_sprite: Array[AnimatedSprite2D]
 @export_range(0,1) var sprite_index = 1
+signal answer_change(answer:int)
+var HEART_SPRITE = load("res://assets/heart.png")
 
 @onready var sprite:AnimatedSprite2D = selected_sprite[sprite_index]
 
@@ -15,9 +17,10 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
+		$jump.play()
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
@@ -41,20 +44,22 @@ func _on_ready() -> void:
 	update_score_ui()
 	update_health_ui()
 	hide_question()
-
+	init_health_bar()
+	$UI.visible = true
 
 # TODO: export to player please
 @onready var option_list:Array[Node] = [
-	$"question/answer A",
-	$"question/answer B",
-	$"question/answer C",
-	$"question/answer D",
+	$"UI/question/answer A",
+	$"UI/question/answer B",
+	$"UI/question/answer C",
+	$"UI/question/answer D",
 ]
-@onready var question_label:Label = $question/Label
-@onready var question_ui:Node2D = $question
-@onready var score_label:Label = $Score
-@onready var confirm_button:Button = $question/MarginContainer/confirm
-@onready var health_ui:Label = $Health
+@onready var question_label:Label = $UI/question/Label
+@onready var question_ui:Node2D = $UI/question
+@onready var score_label:Label = $UI/MarginContainer2/Score
+@onready var confirm_button:Button = $UI/question/MarginContainer/confirm
+@onready var health_ui:Label = $UI/Health
+@onready var health_bar:HealthBar = $"UI/MarginContainer/Health Bar"
 
 @export var MAX_HEALTH = 3
 
@@ -65,52 +70,59 @@ var health = MAX_HEALTH
 var enemy:Enemy
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if(not_enemy(body)): return
-	enemy = body
-	show_question()
-	update_options(enemy.generateOptions(len(option_list)))
-	update_question(enemy.question)
+	print(body is Enemy)
+	if(body is Enemy):
+		enemy = body
+		show_question()
+		update_options(enemy.generateOptions(len(option_list)))
+		update_question(enemy.question)
 	
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	if(not_enemy(body)): return
-	hide_question()
-	enable_button()
-	enemy = null
+	if(body is Enemy):
+		hide_question() # UI
+		enable_button() # UI
+		enemy = null
 
 func _on_confirm_pressed() -> void:
+	print(selected_answer)
 	var correct = enemy.isAnswerCorrect(selected_answer)
 	if(correct):
-		display_answer_is_correct()
-		update_score(enemy.operator)
-		disble_button()
-		update_score_ui()
-		kill_enemy()
+		display_answer_is_correct() # UI
+		update_score(enemy.operator) # UI
+		disble_button() # UI
+		update_score_ui() # UI
+		kill_enemy() 
 	else:
-		disble_button()
-		display_answer_is_incorrect()
+		disble_button() # UI
+		$hurt.play()
+		display_answer_is_incorrect() # UI
+		update_health() # UI
+		update_health_bar() # UI
 		await wait(1)
-		enable_button()
-		update_question(enemy.question)
-		update_health()
-		update_health_ui()
+		enable_button() # UI
+		update_question(enemy.question) # UI
+		
 		if(health == 0):
 			restart_level()
+	
+	selected_answer = -1
 			#go_to_main_menu()
 
 
 
 func not_enemy(body:Node2D)->bool : return "ENEMY" not in body || !body.ENEMY
-func update_question(question:String):question_label.text = question
+
+func update_question(question:String):question_label.text = "%s %s" % [question,display_question_mark_when_answer_empty()]
 func hide_question(): question_ui.visible = false
 func show_question(): question_ui.visible = true
 func display_answer_is_correct(): question_label.text = "correct"
 func display_answer_is_incorrect(): question_label.text = "incorrect"
-
+func display_question_mark_when_answer_empty() -> String:
+	return str(selected_answer) if selected_answer >= 0 else "?"
 func update_options(generatedOptions:Array[int]):
 	for i in range(0,len(option_list)):
-		print(generatedOptions[i])
 		option_list[i].answer = str(generatedOptions[i]) 
 
 func CalcScore(operator:String) -> int:
@@ -135,3 +147,19 @@ func wait(seconds:float): await get_tree().create_timer(seconds).timeout
 func kill_enemy(): 
 	if(enemy == null): return
 	else: enemy.die()
+
+
+func _on_answer_change(answer:int) -> void:
+	selected_answer = answer
+	#print("on answer change")
+	#print(selected_answer)
+	update_question(enemy.question)
+	
+func init_health_bar():
+	#print("init health")
+	health_bar.max_health = MAX_HEALTH
+	update_health_bar()
+	
+func update_health_bar(): 
+	#print("update health")
+	health_bar.health = health
