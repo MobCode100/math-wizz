@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://43sc3jjy8c20"]
+[gd_scene load_steps=10 format=3 uid="uid://43sc3jjy8c20"]
 
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="1_av51d"]
 [ext_resource type="Texture2D" uid="uid://ngr0smldkfwl" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_Button02a_3.png" id="1_my6hh"]
 [ext_resource type="Texture2D" uid="uid://dm1eksa8tkj" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_Button02a_1.png" id="2_b0rxf"]
 [ext_resource type="Texture2D" uid="uid://tqnpg5bicvdw" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_Button02a_4.png" id="2_wc16o"]
+[ext_resource type="Script" path="res://scenes/UI element/button.gd" id="5_r5tah"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nks7h"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5kme8"]
 texture = ExtResource("1_my6hh")
@@ -27,23 +30,52 @@ texture_margin_right = 4.0
 texture_margin_bottom = 10.0
 
 [node name="Button" type="Button"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -69.5
-offset_top = -35.0
-offset_right = 69.5
-offset_bottom = 35.0
+custom_minimum_size = Vector2(0, 32)
+anchors_preset = -1
+anchor_left = 0.0989583
+anchor_top = 0.152778
+anchor_right = 0.385417
+anchor_bottom = 0.242284
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 0.654902)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 0.392157)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 0.694118)
 theme_override_fonts/font = ExtResource("1_av51d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nks7h")
 theme_override_styles/hover = SubResource("StyleBoxTexture_5kme8")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_16cdc")
 theme_override_styles/normal = SubResource("StyleBoxTexture_vxfgg")
-text = "text"
+text = "Text"
+script = ExtResource("5_r5tah")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+clip_contents = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -6.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/default_color = Color(0, 0, 0, 0.694118)
+theme_override_fonts/normal_font = ExtResource("1_av51d")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

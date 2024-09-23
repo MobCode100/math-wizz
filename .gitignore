@@ -15,3 +15,6 @@ data_*/
 mono_crash.*.json
 .vscode
 *.apk*
+
+# Mac feces
+.DS_Store

@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=4 uid="uid://dow4wfydymooy"]
+[gd_scene load_steps=23 format=4 uid="uid://dow4wfydymooy"]
 
 [ext_resource type="Script" path="res://Main Menu.gd" id="1_11ia6"]
 [ext_resource type="Texture2D" uid="uid://css0x8ef3bgki" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_Banner02a.png" id="2_woivj"]
 [ext_resource type="FontFile" uid="uid://c53kogtyjwsss" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_4bjmt"]
 [ext_resource type="PackedScene" uid="uid://43sc3jjy8c20" path="res://scenes/UI element/Button.tscn" id="3_8mgcx"]
+[ext_resource type="Texture2D" uid="uid://bsm81frtrj8j2" path="res://assets/01_Flat_Theme/Style 1 Symbols (39).png" id="4_a45nj"]
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://assets/sprites/world_tileset.png" id="4_ktjjl"]
 [ext_resource type="Texture2D" uid="uid://d17edwqeelfx8" path="res://assets/AnimationSheet_Character.png" id="5_ix6ud"]
 
@@ -462,5 +463,26 @@ text = "+"
 position = Vector2(211, 479)
 sprite_frames = SubResource("SpriteFrames_ul5g8")
 autoplay = "default"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -91.0
+offset_top = -67.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Button" parent="MarginContainer" instance=ExtResource("3_8mgcx")]
+layout_mode = 2
+text = ""
+icon = ExtResource("4_a45nj")
+icon_alignment = 1
+expand_icon = true
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]

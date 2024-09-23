@@ -1,10 +1,12 @@
-[gd_scene load_steps=23 format=4 uid="uid://4yeajrhoyaxf"]
+[gd_scene load_steps=25 format=4 uid="uid://4yeajrhoyaxf"]
 
 [ext_resource type="Script" path="res://scenes/Auth/Login.gd" id="1_cd3if"]
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://assets/sprites/world_tileset.png" id="2_ico61"]
 [ext_resource type="Texture2D" uid="uid://d17edwqeelfx8" path="res://assets/AnimationSheet_Character.png" id="3_5jw7m"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="3_j82u3"]
 [ext_resource type="PackedScene" uid="uid://43sc3jjy8c20" path="res://scenes/UI element/Button.tscn" id="3_qe88n"]
+[ext_resource type="Texture2D" uid="uid://css0x8ef3bgki" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_Banner02a.png" id="6_7dbdr"]
+[ext_resource type="FontFile" uid="uid://c53kogtyjwsss" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="7_h3q0g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tw5in"]
 texture = ExtResource("2_ico61")
@@ -407,7 +409,7 @@ secret = true
 
 [node name="Button" parent="VBoxContainer" instance=ExtResource("3_qe88n")]
 layout_mode = 2
-text = "login"
+text = "Login"
 
 [node name="+ wizard2" type="Label" parent="."]
 offset_left = 214.0
@@ -445,5 +447,22 @@ text = "+"
 position = Vector2(211, 479)
 sprite_frames = SubResource("SpriteFrames_p71er")
 autoplay = "default"
+
+[node name="UiFlatBanner02a" type="Sprite2D" parent="."]
+position = Vector2(592, 148.5)
+scale = Vector2(6.96875, 5.45)
+texture = ExtResource("6_7dbdr")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 429.0
+offset_top = 101.5
+offset_right = 757.0
+offset_bottom = 165.5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_h3q0g")
+theme_override_font_sizes/font_size = 20
+text = "Math Wizz"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
