@@ -7,7 +7,10 @@ func _ready() -> void:
 	$".".custom_minimum_size = $".".size
 	$RichTextLabel.text = "[center]" + $".".text + "[/center]"
 	$".".text = ""
-
+	if ($".".icon):
+		# 64.0/122.0 is the icon width percentage
+		$"RichTextLabel".add_image($".".icon,$".".size.x * (64.0/122.0))
+		$".".icon = null
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
