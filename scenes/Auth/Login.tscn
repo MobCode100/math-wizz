@@ -465,4 +465,6 @@ text = "Math Wizz"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

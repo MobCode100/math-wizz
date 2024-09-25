@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://doj7qr6tw57i0"]
+[gd_scene load_steps=26 format=3 uid="uid://doj7qr6tw57i0"]
 
 [ext_resource type="Texture2D" uid="uid://cykhetrvil23v" path="res://assets/wizard char.png" id="1_bcis6"]
 [ext_resource type="Script" path="res://scenes/Characters/wizard.gd" id="1_k8p31"]
 [ext_resource type="Texture2D" uid="uid://d17edwqeelfx8" path="res://assets/AnimationSheet_Character.png" id="2_cchmq"]
 [ext_resource type="Script" path="res://scenes/Characters/ui.gd" id="4_fewoe"]
+[ext_resource type="PackedScene" uid="uid://ddbc8n7v2mbjy" path="res://scenes/UI element/pause screen/pause.tscn" id="4_lsvik"]
 [ext_resource type="Texture2D" uid="uid://bok0thdme2c0p" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_Banner04a.png" id="4_wlqlo"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="5_f2u60"]
 [ext_resource type="PackedScene" uid="uid://43sc3jjy8c20" path="res://scenes/UI element/Button.tscn" id="6_af8vh"]
@@ -13,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dt13r06u87fib" path="res://addons/virtual_joystick/textures/joystick_tip_arrows.png" id="10_u2kr0"]
 [ext_resource type="AudioStream" uid="uid://d3ga5iqgco704" path="res://assets/sounds/hurt.wav" id="11_1rb3u"]
 [ext_resource type="AudioStream" uid="uid://b55xtmvwkoslc" path="res://assets/sounds/jump.wav" id="11_lyf5p"]
+[ext_resource type="Script" path="res://scenes/Characters/pause_button.gd" id="13_3r0dk"]
 [ext_resource type="PackedScene" uid="uid://bjrivrdvgjiix" path="res://scenes/UI element/health_bar.tscn" id="13_mkf34"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yj28t"]
@@ -98,7 +100,7 @@ position = Vector2(1, 37)
 zoom = Vector2(2, 2)
 
 [node name="UI" type="CanvasLayer" parent="."]
-visible = false
+editor_description = "HUD for player"
 script = ExtResource("4_fewoe")
 
 [node name="Health" type="Label" parent="UI"]
@@ -145,6 +147,8 @@ offset_right = 300.0
 offset_bottom = -107.0
 grow_vertical = 0
 script = ExtResource("8_ahxsx")
+pressed_color = Color(0.745098, 0.745098, 0.745098, 0.690196)
+deadzone_size = 5.0
 action_up = "jump"
 
 [node name="Base" type="TextureRect" parent="UI/Virtual joystick left"]
@@ -222,6 +226,7 @@ grow_horizontal = 1
 grow_vertical = 1
 text = "100"
 script = ExtResource("6_c463f")
+answer = 0
 
 [node name="answer B" parent="UI/question" instance=ExtResource("6_af8vh")]
 anchors_preset = 0
@@ -237,6 +242,7 @@ grow_horizontal = 1
 grow_vertical = 1
 text = "100"
 script = ExtResource("6_c463f")
+answer = 0
 
 [node name="answer C" parent="UI/question" instance=ExtResource("6_af8vh")]
 anchors_preset = 0
@@ -252,6 +258,7 @@ grow_horizontal = 1
 grow_vertical = 1
 text = "100"
 script = ExtResource("6_c463f")
+answer = 0
 
 [node name="answer D" parent="UI/question" instance=ExtResource("6_af8vh")]
 anchors_preset = 0
@@ -267,6 +274,7 @@ grow_horizontal = 1
 grow_vertical = 1
 text = "100"
 script = ExtResource("6_c463f")
+answer = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/question"]
 offset_left = 964.0
@@ -279,6 +287,23 @@ theme_override_constants/margin_left = 10
 layout_mode = 2
 text = "Confirm"
 
+[node name="Button" parent="UI" instance=ExtResource("6_af8vh")]
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.009
+offset_left = -31.0
+offset_top = 7.0
+offset_right = 50.0
+offset_bottom = 38.168
+grow_vertical = 1
+text = "☰"
+script = ExtResource("13_3r0dk")
+
+[node name="pause" parent="." instance=ExtResource("4_lsvik")]
+layer = 2
+visible = false
+
 [node name="jump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_lyf5p")
 
@@ -290,3 +315,5 @@ stream = ExtResource("11_1rb3u")
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="pressed" from="UI/question/MarginContainer/confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="UI/Button" to="UI/Button" method="_on_pressed"]
+[connection signal="visibility_changed" from="pause" to="UI" method="_on_pause_visibility_changed"]

@@ -46,7 +46,7 @@ func _on_ready() -> void:
 	hide_question()
 	init_health_bar()
 	$UI.visible = true
-
+	$pause.visible = false
 # TODO: export to player please
 @onready var option_list:Array[Node] = [
 	$"UI/question/answer A",
@@ -101,8 +101,7 @@ func _on_confirm_pressed() -> void:
 		update_health() # UI
 		update_health_bar() # UI
 		await wait(1)
-		enable_button() # UI
-		update_question(enemy.question) # UI
+		enable_button() # UI		update_question(enemy.question) # UI
 		
 		if(health == 0):
 			restart_level()
