@@ -7,7 +7,18 @@ const JUMP_VELOCITY = -400.0
 @export var selected_sprite: Array[AnimatedSprite2D]
 @export_range(0,1) var sprite_index = 1
 signal answer_change(answer:int)
+signal died
+signal score_updated
+signal health_updated
 var HEART_SPRITE = load("res://assets/heart.png")
+
+var time_keeper:Timer
+@onready var time_label = %"Time Left"
+
+func _process(delta: float) -> void:
+	time_label.visible = time_keeper != null
+	if(time_keeper != null):
+		time_label.text = "time left: %d" % time_keeper.time_left
 
 @onready var sprite:AnimatedSprite2D = selected_sprite[sprite_index]
 
@@ -42,11 +53,13 @@ func player_animation_direction(direction):
 func _on_ready() -> void:
 	sprite.visible = true
 	update_score_ui()
-	update_health_ui()
 	hide_question()
 	init_health_bar()
 	$UI.visible = true
 	$pause.visible = false
+	
+	
+	
 # TODO: export to player please
 @onready var option_list:Array[Node] = [
 	$"UI/question/answer A",
@@ -102,9 +115,12 @@ func _on_confirm_pressed() -> void:
 		update_health_bar() # UI
 		await wait(1)
 		enable_button() # UI		update_question(enemy.question) # UI
+		update_question(enemy.question)
 		
-		if(health == 0):
-			restart_level()
+		if(health <= 0):
+			#print("died")
+			emit_signal("died")
+			#restart_level()
 	
 	selected_answer = -1
 			#go_to_main_menu()
@@ -133,13 +149,17 @@ func CalcScore(operator:String) -> int:
 		_: return 0
 
 func update_score_ui(): score_label.text = "score %4d" % score
-func update_score(operator:String): score += CalcScore(operator)
+func update_score(operator:String): 
+	score += CalcScore(operator)
+	emit_signal("score_updated")
 # avoid spam confirm button for extra point
 func disble_button() : confirm_button.disabled = true
 func enable_button() : confirm_button.disabled = false
 
-func update_health() : health = max(health -1 , 0)
-func update_health_ui(): health_ui.text = "lives : %d / %d" % [health,MAX_HEALTH]
+func update_health() : 
+	health = max(health -1 , 0)
+	emit_signal("health_updated")
+	
 func go_to_main_menu(): get_tree().change_scene_to_file("res://scenes/Main Menu/Main Menu.tscn")
 func restart_level(): get_tree().reload_current_scene()
 func wait(seconds:float): await get_tree().create_timer(seconds).timeout
@@ -160,5 +180,11 @@ func init_health_bar():
 	update_health_bar()
 	
 func update_health_bar(): 
-	#print("update health")
 	health_bar.health = health
+
+func update_player_data(data:Dictionary):
+	MAX_HEALTH = data['max_health']
+	health = data['health']
+	score = data['points']
+	update_score_ui()
+	update_health_bar()

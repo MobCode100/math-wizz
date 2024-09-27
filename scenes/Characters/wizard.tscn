@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://doj7qr6tw57i0"]
+[gd_scene load_steps=27 format=3 uid="uid://doj7qr6tw57i0"]
 
 [ext_resource type="Texture2D" uid="uid://cykhetrvil23v" path="res://assets/wizard char.png" id="1_bcis6"]
 [ext_resource type="Script" path="res://scenes/Characters/wizard.gd" id="1_k8p31"]
@@ -68,6 +68,9 @@ font = ExtResource("5_f2u60")
 font = ExtResource("5_f2u60")
 font_size = 32
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vdylm"]
+font = ExtResource("5_f2u60")
 
 [node name="Wizard" type="CharacterBody2D" node_paths=PackedStringArray("selected_sprite")]
 script = ExtResource("1_k8p31")
@@ -299,6 +302,20 @@ offset_bottom = 38.168
 grow_vertical = 1
 text = "☰"
 script = ExtResource("13_3r0dk")
+
+[node name="Time Left" type="Label" parent="UI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -203.0
+offset_top = 44.0
+offset_right = -19.0
+offset_bottom = 67.0
+grow_horizontal = 0
+text = "Time Left : ???"
+label_settings = SubResource("LabelSettings_vdylm")
 
 [node name="pause" parent="." instance=ExtResource("4_lsvik")]
 layer = 2

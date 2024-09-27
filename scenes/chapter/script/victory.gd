@@ -2,16 +2,15 @@ extends Node2D
 
 var points:int = 0
 var next_scene:PackedScene
+@onready var point_label = %point
+@onready var exit_button = %Button
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	points = VictoryVariable.points
 	next_scene = VictoryVariable.next_scene
-	$CenterContainer/VBoxContainer/point.text = "%d points" % points
-	$CenterContainer/VBoxContainer/Button.text = "Main Menu" if next_scene == null else "Next Chapter"
+	point_label.text = "%d points" % points
+	exit_button.text = "Main Menu" if next_scene == null else "Next Chapter"
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
 func _on_button_pressed() -> void:

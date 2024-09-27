@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://1bhmnl4eqani"]
+
+[ext_resource type="PackedScene" uid="uid://duyi3bjrt3b6i" path="res://scenes/dungeon raid/chapters/sample1.tscn" id="1_5fty5"]
+[ext_resource type="Script" path="res://scenes/dungeon raid/script/dungeon_raid.gd" id="1_vnpel"]
+[ext_resource type="Script" path="res://scenes/dungeon raid/script/player_data.gd" id="2_5n0a2"]
+[ext_resource type="PackedScene" uid="uid://dt0be6wi5vnpy" path="res://scenes/dungeon raid/chapters/sample2.tscn" id="2_76g3i"]
+[ext_resource type="PackedScene" uid="uid://b4tvyphja748f" path="res://scenes/dungeon raid/chapters/dungeon defeat.tscn" id="2_gb7vh"]
+[ext_resource type="Script" path="res://scenes/dungeon raid/script/scene_manager.gd" id="3_cl1ad"]
+
+[node name="DungeonRaid" type="Node"]
+script = ExtResource("1_vnpel")
+defeat_scene = ExtResource("2_gb7vh")
+
+[node name="Scene Selector" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_cl1ad")
+scenes = Array[PackedScene]([ExtResource("1_5fty5"), ExtResource("2_76g3i")])
+
+[node name="Player Data" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_5n0a2")
+
+[node name="Time Keeper" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 300.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Time Keeper" to="." method="_on_time_keeper_timeout"]

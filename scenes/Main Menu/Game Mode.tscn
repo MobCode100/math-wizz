@@ -402,3 +402,4 @@ text = "Dungeon Raid
 "
 
 [connection signal="pressed" from="CenterContainer/HBoxContainer/MQ Margin/Main Quest" to="." method="_on_main_quest_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/DR Margin/Dungeon Raid" to="." method="_on_dungeon_raid_pressed"]

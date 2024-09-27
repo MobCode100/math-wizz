@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cbpxgoerjvjmf" path="res://scenes/map/sample map.tscn" id="2_nkjku"]
 [ext_resource type="PackedScene" uid="uid://cusq8qktrmu7k" path="res://scenes/Characters/enemy.tscn" id="3_yqi0q"]
 [ext_resource type="PackedScene" uid="uid://jlv0wha67yt7" path="res://scenes/chapter/chapter 2.tscn" id="4_fnq3l"]
-[ext_resource type="Script" path="res://scenes/chapter/exit_level.gd" id="5_n5wax"]
+[ext_resource type="Script" path="res://scenes/chapter/script/exit_level.gd" id="5_n5wax"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eitde"]
 size = Vector2(47, 81)

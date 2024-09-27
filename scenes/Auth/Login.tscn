@@ -408,8 +408,12 @@ layout_mode = 2
 secret = true
 
 [node name="Button" parent="VBoxContainer" instance=ExtResource("3_qe88n")]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
 text = "Login"
+icon_alignment = 0
 
 [node name="+ wizard2" type="Label" parent="."]
 offset_left = 214.0

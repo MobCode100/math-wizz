@@ -1,17 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmjj04vwifm1a"]
+[gd_scene load_steps=5 format=3 uid="uid://cl0sgqb20h3mq"]
 
-[ext_resource type="Script" path="res://scenes/chapter/script/victory.gd" id="1_ht4yn"]
-[ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="1_kyq3t"]
+[ext_resource type="Script" path="res://scenes/chapter/script/victory.gd" id="1_gew88"]
+[ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="2_8gpe3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ugfgy"]
-font = ExtResource("1_kyq3t")
+font = ExtResource("2_8gpe3")
 font_size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_6afhx"]
-font = ExtResource("1_kyq3t")
+font = ExtResource("2_8gpe3")
 
 [node name="Victory" type="Node2D"]
-script = ExtResource("1_ht4yn")
+script = ExtResource("1_gew88")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 offset_right = 1158.0
@@ -22,7 +22,7 @@ layout_mode = 2
 
 [node name="VICTORY" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "VICTORY"
+text = "DEFEAT"
 label_settings = SubResource("LabelSettings_ugfgy")
 horizontal_alignment = 1
 vertical_alignment = 1

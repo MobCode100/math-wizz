@@ -11,4 +11,8 @@ func _process(delta):
 	pass
 
 func _on_main_quest_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/Main Menu/chapter select.tscn") # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/Main Menu/chapter select.tscn")
+
+
+func _on_dungeon_raid_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/dungeon raid/dungeon_raid.tscn")
