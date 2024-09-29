@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/Game Mode.gd" id="1_brtur"]
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://assets/sprites/world_tileset.png" id="2_w5agg"]
 [ext_resource type="Texture2D" uid="uid://d17edwqeelfx8" path="res://assets/AnimationSheet_Character.png" id="3_bu662"]
-[ext_resource type="PackedScene" uid="uid://43sc3jjy8c20" path="res://scenes/UI element/Button.tscn" id="4_vu7bt"]
+[ext_resource type="PackedScene" uid="uid://43sc3jjy8c20" path="res://scenes/UI element/button/Button.tscn" id="4_vu7bt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hte8k"]
 texture = ExtResource("2_w5agg")
@@ -398,7 +398,7 @@ size_flags_horizontal = 4
 
 [node name="Dungeon Raid" parent="CenterContainer/HBoxContainer/DR Margin" instance=ExtResource("4_vu7bt")]
 layout_mode = 2
-text = "Dungeon Raid
+text = "Ranked
 "
 
 [connection signal="pressed" from="CenterContainer/HBoxContainer/MQ Margin/Main Quest" to="." method="_on_main_quest_pressed"]

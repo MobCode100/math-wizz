@@ -1,5 +1,5 @@
 extends CanvasLayer
-
+@export var settings_scene:PackedScene
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
@@ -20,3 +20,14 @@ func _on_main_menu_pressed() -> void:
 func _on_back_to_game_pressed() -> void:
 	$".".hide()
 	get_tree().paused = false
+
+
+func _on_settings_pressed() -> void:
+	var pause_scene = $"."
+	var settings = settings_scene.instantiate()
+	settings.last_scene =  pause_scene
+	print("settings name:%s" % pause_scene.name)
+	pause_scene.get_parent().add_child(settings)
+	pause_scene.get_parent().remove_child(pause_scene)
+	#add_child(settings)
+	

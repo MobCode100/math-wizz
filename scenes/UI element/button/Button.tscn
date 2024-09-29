@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ngr0smldkfwl" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_Button02a_3.png" id="1_my6hh"]
 [ext_resource type="Texture2D" uid="uid://dm1eksa8tkj" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_Button02a_1.png" id="2_b0rxf"]
 [ext_resource type="Texture2D" uid="uid://tqnpg5bicvdw" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_Button02a_4.png" id="2_wc16o"]
-[ext_resource type="Script" path="res://scenes/UI element/button.gd" id="5_r5tah"]
+[ext_resource type="Script" path="res://scenes/UI element/button/button.gd" id="5_r5tah"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nks7h"]
 

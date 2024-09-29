@@ -5,8 +5,11 @@ extends Node
 @onready var scene_selector = %"Scene Selector"
 @onready var time_keeper = %"Time Keeper"
 @export var defeat_scene:PackedScene
+
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready():
+	var current_scene_filename = get_tree().current_scene.scene_file_path
+	GlobalSceneManager.insert_scene(current_scene_filename)
 	load_current_scene()
 	time_keeper.time_left
 

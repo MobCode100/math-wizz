@@ -7,13 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://ddbc8n7v2mbjy" path="res://scenes/UI element/pause screen/pause.tscn" id="4_lsvik"]
 [ext_resource type="Texture2D" uid="uid://bok0thdme2c0p" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_Banner04a.png" id="4_wlqlo"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="5_f2u60"]
-[ext_resource type="PackedScene" uid="uid://43sc3jjy8c20" path="res://scenes/UI element/Button.tscn" id="6_af8vh"]
+[ext_resource type="PackedScene" uid="uid://43sc3jjy8c20" path="res://scenes/UI element/button/Button.tscn" id="6_af8vh"]
 [ext_resource type="Script" path="res://scenes/Characters/answer.gd" id="6_c463f"]
 [ext_resource type="AudioStream" uid="uid://d3ga5iqgco704" path="res://assets/sounds/hurt.wav" id="11_1rb3u"]
 [ext_resource type="AudioStream" uid="uid://b55xtmvwkoslc" path="res://assets/sounds/jump.wav" id="11_lyf5p"]
 [ext_resource type="Texture2D" uid="uid://cm8ig2oxdx387" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_ButtonArrow01a.png" id="11_ti6sq"]
 [ext_resource type="Script" path="res://scenes/Characters/pause_button.gd" id="13_3r0dk"]
-[ext_resource type="PackedScene" uid="uid://bjrivrdvgjiix" path="res://scenes/UI element/health_bar.tscn" id="13_mkf34"]
+[ext_resource type="PackedScene" uid="uid://bjrivrdvgjiix" path="res://scenes/UI element/health bar/health_bar.tscn" id="13_mkf34"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yj28t"]
 atlas = ExtResource("1_bcis6")
@@ -278,7 +278,7 @@ label_settings = SubResource("LabelSettings_vdylm")
 [node name="jump" type="TouchScreenButton" parent="UI"]
 position = Vector2(923, 579.036)
 rotation = -1.5708
-scale = Vector2(6, 6)
+scale = Vector2(7, 7)
 texture_normal = ExtResource("11_ti6sq")
 shape = SubResource("RectangleShape2D_wg625")
 action = "jump"
@@ -293,9 +293,8 @@ grow_vertical = 0
 alignment = 1
 
 [node name="move left" type="TouchScreenButton" parent="UI/HBoxContainer"]
-position = Vector2(173, 156)
-rotation = 3.14159
-scale = Vector2(6, 6)
+position = Vector2(173, 63)
+scale = Vector2(-6, 6)
 texture_normal = ExtResource("11_ti6sq")
 shape = SubResource("RectangleShape2D_e7owg")
 passby_press = true
@@ -315,9 +314,11 @@ visible = false
 
 [node name="jump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_lyf5p")
+bus = &"SFX"
 
 [node name="hurt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_1rb3u")
+bus = &"SFX"
 
 [connection signal="answer_change" from="." to="." method="_on_answer_change"]
 [connection signal="ready" from="." to="." method="_on_ready"]

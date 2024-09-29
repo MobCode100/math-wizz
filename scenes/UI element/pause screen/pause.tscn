@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddbc8n7v2mbjy"]
+[gd_scene load_steps=4 format=3 uid="uid://ddbc8n7v2mbjy"]
 
 [ext_resource type="Script" path="res://scenes/UI element/pause screen/pause.gd" id="1_5qcrp"]
-[ext_resource type="PackedScene" uid="uid://43sc3jjy8c20" path="res://scenes/UI element/Button.tscn" id="1_82shr"]
+[ext_resource type="PackedScene" uid="uid://43sc3jjy8c20" path="res://scenes/UI element/button/Button.tscn" id="1_82shr"]
+[ext_resource type="PackedScene" uid="uid://bm3pdbl7cdihx" path="res://scenes/UI element/settings/settings.tscn" id="2_tlpqw"]
 
 [node name="Pause" type="CanvasLayer"]
 script = ExtResource("1_5qcrp")
+settings_scene = ExtResource("2_tlpqw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1155.0
@@ -32,4 +34,5 @@ layout_mode = 2
 text = "Main Menu"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Back to Game" to="." method="_on_back_to_game_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]

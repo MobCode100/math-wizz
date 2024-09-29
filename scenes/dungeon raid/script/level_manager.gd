@@ -21,7 +21,11 @@ func _process(delta: float) -> void:
 	pass
 
 func go_next_scene(body:Node2D):
-	emit_signal("next_scene")
+	
+	print("next scene %s" % body.name)
+	# need this filter because collusion can detect map layer
+	if(body is Wizard):
+		emit_signal("next_scene")
 
 func init_player_data(data:Dictionary):
 	print("init player in scene")

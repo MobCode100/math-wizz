@@ -1,4 +1,4 @@
-extends "res://scenes/UI element/button.gd"
+extends "res://scenes/UI element/button/button.gd"
 
 
 # Called when the node enters the scene tree for the first time.

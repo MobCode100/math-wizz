@@ -14,7 +14,11 @@ func _ready() -> void:
 
 
 func _on_button_pressed() -> void:
-		if(next_scene == null) : get_tree().change_scene_to_file("res://scenes/Main Menu/Main Menu.tscn")
-		else : 
-			get_tree().change_scene_to_packed(next_scene)
+	var main_menu_path = "res://scenes/Main Menu/Main Menu.tscn"
+	
+	GlobalSceneManager.clear_stack()
+	if(next_scene == null) : 
+		get_tree().change_scene_to_file(main_menu_path)
+	else : 
+		get_tree().change_scene_to_packed(next_scene)
 			

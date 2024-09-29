@@ -23,6 +23,8 @@ import/import_plugin/default_automatic_importer="SpriteFrames"
 
 Music="res://scenes/music.tscn"
 VictoryVariable="*res://victory_variable.gd"
+GlobalSceneManager="*res://scripts/global_scene_manager.gd"
+GlobalSettings="*res://scripts/global_settings.gd"
 
 [display]
 
@@ -36,7 +38,7 @@ project/assembly_name="First Game"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/table_container/plugin.cfg", "res://addons/virtual_joystick/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/table_container/plugin.cfg")
 
 [input]
 

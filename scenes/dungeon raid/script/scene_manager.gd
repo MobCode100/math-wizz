@@ -6,8 +6,8 @@ var current_scene:Node
 var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
-	var scene = scenes[current_scene_index].instantiate()
 	if(current_scene != null): current_scene.queue_free()
+	var scene = scenes[current_scene_index].instantiate()
 	current_scene = scene
 
 func get_random_scene_index():
