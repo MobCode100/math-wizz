@@ -111,7 +111,8 @@ const delete_user = async (req,res) => {
 
 const get_user = async (req,res) => {
     // This endpoint can receive limit and username, if none specified, it will retrieve all users
-    let data = req.body;
+    const data = req.body;
+    const res_data = {message:"Data retrieved successfully"};
 
     // Generating sql statement
     let sql = "SELECT * FROM user";
@@ -128,10 +129,11 @@ const get_user = async (req,res) => {
     }
 
     const conn = await db.getConnection();
-    data = (await conn.execute(sql,sql_data))[0];
+    res_data.data = (await conn.execute(sql,sql_data))[0];
     conn.release();
 
-    res.json({message:"Data retrieved successfully", data: data});
+    res.json(res_data);
+    _log(data,res_data.message);
 }
 
 export { create_user, login, update_user, delete_user, get_user };
