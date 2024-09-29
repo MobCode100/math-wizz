@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://dulks32udjohu"]
+
+[ext_resource type="Script" path="res://scenes/Characters/player/script/player.gd" id="1_27nlo"]
+[ext_resource type="Script" path="res://scenes/Characters/player/script/skin_manager.gd" id="1_qu5mh"]
+[ext_resource type="PackedScene" uid="uid://dwnaayjq44cpo" path="res://scenes/Characters/player/skin/gray_wizard.tscn" id="2_dbj00"]
+[ext_resource type="PackedScene" uid="uid://dem6i5xug4abb" path="res://scenes/Characters/player/skin/blue_wizard.tscn" id="3_ddirx"]
+
+[node name="Player" type="Node2D"]
+position = Vector2(36, 26)
+script = ExtResource("1_27nlo")
+
+[node name="skin manager" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(15, 7)
+script = ExtResource("1_qu5mh")
+skin_scene = Array[PackedScene]([ExtResource("3_ddirx"), ExtResource("2_dbj00")])

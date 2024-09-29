@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://doj7qr6tw57i0"]
+[gd_scene load_steps=28 format=3 uid="uid://doj7qr6tw57i0"]
 
 [ext_resource type="Texture2D" uid="uid://cykhetrvil23v" path="res://assets/wizard char.png" id="1_bcis6"]
 [ext_resource type="Script" path="res://scenes/Characters/wizard.gd" id="1_k8p31"]
@@ -9,11 +9,9 @@
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="5_f2u60"]
 [ext_resource type="PackedScene" uid="uid://43sc3jjy8c20" path="res://scenes/UI element/Button.tscn" id="6_af8vh"]
 [ext_resource type="Script" path="res://scenes/Characters/answer.gd" id="6_c463f"]
-[ext_resource type="Script" path="res://addons/virtual_joystick/virtual_joystick.gd" id="8_ahxsx"]
-[ext_resource type="Texture2D" uid="uid://bm30au8mjfc2f" path="res://addons/virtual_joystick/textures/joystick_base_outline.png" id="9_x2syn"]
-[ext_resource type="Texture2D" uid="uid://dt13r06u87fib" path="res://addons/virtual_joystick/textures/joystick_tip_arrows.png" id="10_u2kr0"]
 [ext_resource type="AudioStream" uid="uid://d3ga5iqgco704" path="res://assets/sounds/hurt.wav" id="11_1rb3u"]
 [ext_resource type="AudioStream" uid="uid://b55xtmvwkoslc" path="res://assets/sounds/jump.wav" id="11_lyf5p"]
+[ext_resource type="Texture2D" uid="uid://cm8ig2oxdx387" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_ButtonArrow01a.png" id="11_ti6sq"]
 [ext_resource type="Script" path="res://scenes/Characters/pause_button.gd" id="13_3r0dk"]
 [ext_resource type="PackedScene" uid="uid://bjrivrdvgjiix" path="res://scenes/UI element/health_bar.tscn" id="13_mkf34"]
 
@@ -71,6 +69,12 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vdylm"]
 font = ExtResource("5_f2u60")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wg625"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7owg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mu5hr"]
 
 [node name="Wizard" type="CharacterBody2D" node_paths=PackedStringArray("selected_sprite")]
 script = ExtResource("1_k8p31")
@@ -138,63 +142,13 @@ theme_override_constants/margin_top = 20
 [node name="Health Bar" parent="UI/MarginContainer" instance=ExtResource("13_mkf34")]
 layout_mode = 2
 
-[node name="Virtual joystick left" type="Control" parent="UI"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 3
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 100.0
-offset_top = -272.0
-offset_right = 300.0
-offset_bottom = -107.0
-grow_vertical = 0
-script = ExtResource("8_ahxsx")
-pressed_color = Color(0.745098, 0.745098, 0.745098, 0.690196)
-deadzone_size = 5.0
-action_up = "jump"
-
-[node name="Base" type="TextureRect" parent="UI/Virtual joystick left"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = -7.0
-offset_top = -67.0
-offset_right = 140.0
-offset_bottom = 54.0
-grow_vertical = 0
-pivot_offset = Vector2(100, 100)
-mouse_force_pass_scroll_events = false
-texture = ExtResource("9_x2syn")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Tip" type="TextureRect" parent="UI/Virtual joystick left/Base"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -50.0
-offset_right = 50.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(50, 50)
-texture = ExtResource("10_u2kr0")
-expand_mode = 3
-stretch_mode = 5
-
 [node name="question" type="Node2D" parent="UI"]
 
 [node name="NinePatchRect" type="NinePatchRect" parent="UI/question"]
-offset_left = 463.0
-offset_top = 500.0
-offset_right = 836.0
-offset_bottom = 588.0
+offset_left = 394.0
+offset_top = 446.0
+offset_right = 767.0
+offset_bottom = 534.0
 texture = ExtResource("4_wlqlo")
 region_rect = Rect2(0, 0, 64, 20)
 patch_margin_left = 4
@@ -204,10 +158,10 @@ patch_margin_bottom = 2
 
 [node name="Label" type="Label" parent="UI/question"]
 z_index = 1
-offset_left = 512.0
-offset_top = 528.167
-offset_right = 788.0
-offset_bottom = 549.167
+offset_left = 443.0
+offset_top = 474.167
+offset_right = 727.0
+offset_bottom = 506.167
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_f2u60")
 text = "no question"
@@ -221,10 +175,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 1000.0
-offset_top = 465.0
-offset_right = 1050.0
-offset_bottom = 495.0
+offset_left = 390.0
+offset_top = 547.0
+offset_right = 440.0
+offset_bottom = 577.0
 grow_horizontal = 1
 grow_vertical = 1
 text = "100"
@@ -237,10 +191,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 1048.0
-offset_top = 502.0
-offset_right = 1098.0
-offset_bottom = 532.0
+offset_left = 456.0
+offset_top = 546.0
+offset_right = 506.0
+offset_bottom = 576.0
 grow_horizontal = 1
 grow_vertical = 1
 text = "100"
@@ -253,10 +207,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 998.0
-offset_top = 537.0
-offset_right = 1048.0
-offset_bottom = 567.0
+offset_left = 594.0
+offset_top = 548.0
+offset_right = 644.0
+offset_bottom = 578.0
 grow_horizontal = 1
 grow_vertical = 1
 text = "100"
@@ -269,10 +223,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 956.0
-offset_top = 500.0
-offset_right = 1006.0
-offset_bottom = 530.0
+offset_left = 524.0
+offset_top = 547.0
+offset_right = 574.0
+offset_bottom = 577.0
 grow_horizontal = 1
 grow_vertical = 1
 text = "100"
@@ -280,15 +234,19 @@ script = ExtResource("6_c463f")
 answer = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/question"]
-offset_left = 964.0
-offset_top = 573.0
-offset_right = 1078.0
-offset_bottom = 603.0
+offset_left = 658.0
+offset_top = 548.0
+offset_right = 772.0
+offset_bottom = 578.0
 theme_override_constants/margin_left = 10
 
 [node name="confirm" parent="UI/question/MarginContainer" instance=ExtResource("6_af8vh")]
 layout_mode = 2
 text = "Confirm"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/question"]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Button" parent="UI" instance=ExtResource("6_af8vh")]
 anchor_left = 0.5
@@ -316,6 +274,40 @@ offset_bottom = 67.0
 grow_horizontal = 0
 text = "Time Left : ???"
 label_settings = SubResource("LabelSettings_vdylm")
+
+[node name="jump" type="TouchScreenButton" parent="UI"]
+position = Vector2(923, 579.036)
+rotation = -1.5708
+scale = Vector2(6, 6)
+texture_normal = ExtResource("11_ti6sq")
+shape = SubResource("RectangleShape2D_wg625")
+action = "jump"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -237.0
+offset_right = 347.0
+grow_vertical = 0
+alignment = 1
+
+[node name="move left" type="TouchScreenButton" parent="UI/HBoxContainer"]
+position = Vector2(173, 156)
+rotation = 3.14159
+scale = Vector2(6, 6)
+texture_normal = ExtResource("11_ti6sq")
+shape = SubResource("RectangleShape2D_e7owg")
+passby_press = true
+action = "move_left"
+
+[node name="move right" type="TouchScreenButton" parent="UI/HBoxContainer"]
+position = Vector2(203, 61)
+scale = Vector2(6, 6)
+texture_normal = ExtResource("11_ti6sq")
+shape = SubResource("RectangleShape2D_mu5hr")
+passby_press = true
+action = "move_right"
 
 [node name="pause" parent="." instance=ExtResource("4_lsvik")]
 layer = 2

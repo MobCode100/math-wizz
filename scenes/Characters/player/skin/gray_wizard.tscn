@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwnaayjq44cpo"]
+
+[ext_resource type="Texture2D" uid="uid://cykhetrvil23v" path="res://assets/wizard char.png" id="1_n7sw2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_es8rn"]
+atlas = ExtResource("1_n7sw2")
+region = Rect2(0, 0, 79, 65)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k2ipy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_es8rn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_626nw"]
+radius = 6.0
+height = 28.0
+
+[node name="GrayWizard" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_k2ipy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9, 4)
+shape = SubResource("CapsuleShape2D_626nw")
