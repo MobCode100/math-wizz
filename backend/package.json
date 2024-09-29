@@ -1,0 +1,29 @@
+{
+  "name": "math-wizz-api",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "API server for the game Math Wizz",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MobCode100/math-wizz.git"
+  },
+  "keywords": [
+    "api",
+    "express",
+    "nodejs"
+  ],
+  "author": "MobCode100",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/MobCode100/math-wizz/issues"
+  },
+  "homepage": "https://github.com/MobCode100/math-wizz#readme",
+  "dependencies": {
+    "express": "^4.21.0",
+    "mysql2": "^3.11.3"
+  }
+}
