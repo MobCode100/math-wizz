@@ -124,8 +124,7 @@ const get_user = async (req,res) => {
     }
 
     if(data.limit){
-        sql += " LIMIT ?";
-        sql_data.push();
+        sql += " LIMIT " + Number(data.limit);
     }
 
     const conn = await db.getConnection();
