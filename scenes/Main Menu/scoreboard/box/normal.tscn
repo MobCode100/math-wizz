@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7pksb8ax1xs2"]
+
+[ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="1_nq3xl"]
+[ext_resource type="Script" path="res://scenes/Main Menu/scoreboard/box/board.gd" id="1_t6xqh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1nuow"]
+font = ExtResource("1_nq3xl")
+
+[sub_resource type="LabelSettings" id="LabelSettings_j4hwd"]
+font = ExtResource("1_nq3xl")
+
+[node name="Gold" type="HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+offset_right = 400.0
+offset_bottom = 79.0
+script = ExtResource("1_t6xqh")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="position" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "1."
+label_settings = SubResource("LabelSettings_1nuow")
+
+[node name="name" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "hello"
+label_settings = SubResource("LabelSettings_j4hwd")

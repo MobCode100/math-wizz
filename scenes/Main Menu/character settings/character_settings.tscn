@@ -1,0 +1,163 @@
+[gd_scene load_steps=17 format=3 uid="uid://bjypcysu4lt3a"]
+
+[ext_resource type="Script" path="res://scenes/Main Menu/character settings/character setting.gd" id="1_gytaa"]
+[ext_resource type="Texture2D" uid="uid://d17edwqeelfx8" path="res://assets/AnimationSheet_Character.png" id="1_k1qin"]
+[ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="1_vu16e"]
+[ext_resource type="PackedScene" uid="uid://dow4wfydymooy" path="res://scenes/Main Menu/Main Menu.tscn" id="2_1eax5"]
+[ext_resource type="Texture2D" uid="uid://cykhetrvil23v" path="res://assets/wizard char.png" id="2_l1n10"]
+[ext_resource type="Script" path="res://scenes/Main Menu/character settings/character_selector.gd" id="2_p6ogu"]
+[ext_resource type="PackedScene" uid="uid://bj6dstrcm0yks" path="res://scenes/map/background.tscn" id="3_mmxvc"]
+[ext_resource type="Texture2D" uid="uid://7joi5wvcx4cq" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_IconArrow01b.png" id="4_bqydq"]
+[ext_resource type="PackedScene" uid="uid://43sc3jjy8c20" path="res://scenes/UI element/button/Button.tscn" id="4_cxy3a"]
+[ext_resource type="Texture2D" uid="uid://bsm81frtrj8j2" path="res://assets/01_Flat_Theme/Style 1 Symbols (39).png" id="8_cr7p8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cj2ro"]
+font = ExtResource("1_vu16e")
+font_size = 32
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acp77"]
+atlas = ExtResource("1_k1qin")
+region = Rect2(0, 0, 34, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnpxw"]
+atlas = SubResource("AtlasTexture_acp77")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_st3ar"]
+atlas = ExtResource("2_l1n10")
+region = Rect2(14, 17, 34, 36)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mkfqb"]
+font = ExtResource("1_vu16e")
+
+[sub_resource type="LabelSettings" id="LabelSettings_270mp"]
+font = ExtResource("1_vu16e")
+font_size = 32
+
+[node name="CharacterSettings" type="Node2D"]
+script = ExtResource("1_gytaa")
+main_menu = ExtResource("2_1eax5")
+
+[node name="Background" parent="." instance=ExtResource("3_mmxvc")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1155.0
+offset_bottom = 644.0
+color = Color(0.00392157, 0.00392157, 0.00392157, 0.278431)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -255.5
+offset_top = -31.0
+offset_right = 255.5
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Character Selector" type="VBoxContainer" parent="CanvasLayer/VBoxContainer" node_paths=PackedStringArray("skins_control")]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("2_p6ogu")
+skins_control = [NodePath("skin Container/blue wizard"), NodePath("skin Container/gray wizard")]
+
+[node name="skin label" type="Label" parent="CanvasLayer/VBoxContainer/Character Selector"]
+layout_mode = 2
+text = "select character
+"
+label_settings = SubResource("LabelSettings_cj2ro")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="skin Container" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/Character Selector"]
+layout_mode = 2
+alignment = 1
+
+[node name="select left" type="TextureButton" parent="CanvasLayer/VBoxContainer/Character Selector/skin Container"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("4_bqydq")
+stretch_mode = 5
+flip_h = true
+
+[node name="blue wizard" type="TextureRect" parent="CanvasLayer/VBoxContainer/Character Selector/skin Container"]
+visible = false
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = SubResource("AtlasTexture_lnpxw")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="gray wizard" type="TextureRect" parent="CanvasLayer/VBoxContainer/Character Selector/skin Container"]
+visible = false
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = SubResource("AtlasTexture_st3ar")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="select right" type="TextureButton" parent="CanvasLayer/VBoxContainer/Character Selector/skin Container"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("4_bqydq")
+stretch_mode = 5
+
+[node name="skin name" type="Label" parent="CanvasLayer/VBoxContainer/Character Selector"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "skin name"
+label_settings = SubResource("LabelSettings_mkfqb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="name label" type="Label" parent="CanvasLayer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "display name"
+label_settings = SubResource("LabelSettings_270mp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="display name" type="LineEdit" parent="CanvasLayer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Save" parent="CanvasLayer/VBoxContainer" instance=ExtResource("4_cxy3a")]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 100
+theme_override_font_sizes/font_size = 32
+text = "save name"
+
+[node name="back" parent="CanvasLayer" instance=ExtResource("4_cxy3a")]
+unique_name_in_owner = true
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 19.0
+offset_top = 25.0
+offset_right = 88.0
+offset_bottom = 88.0
+grow_horizontal = 1
+grow_vertical = 1
+icon = ExtResource("8_cr7p8")
+expand_icon = true
+
+[node name="user update service" type="HTTPRequest" parent="."]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Character Selector/skin Container/select left" to="CanvasLayer/VBoxContainer/Character Selector" method="_on_select_left_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Character Selector/skin Container/select right" to="CanvasLayer/VBoxContainer/Character Selector" method="_on_select_right_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="CanvasLayer/back" to="." method="_on_back_pressed"]

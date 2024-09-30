@@ -1,0 +1,17 @@
+[remap]
+
+importer="aseprite_wizard.plugin"
+type="SpriteFrames"
+uid="uid://d2ogpsx21nn2v"
+valid=false
+
+[deps]
+
+source_file="res://assets/sprites/bronze cup.aseprite"
+
+[params]
+
+split_layers=false
+exclude_layers_pattern=""
+only_visible_layers=false
+sheet_type="Packed"

@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://168txfy5owhp"]
+
+[ext_resource type="Script" path="res://scenes/Main Menu/scoreboard/manager.gd" id="1_2q6af"]
+[ext_resource type="FontFile" uid="uid://c53kogtyjwsss" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_3ablr"]
+[ext_resource type="PackedScene" uid="uid://bj6dstrcm0yks" path="res://scenes/map/background.tscn" id="1_sqs3e"]
+[ext_resource type="PackedScene" uid="uid://bl0xk6mhay8mp" path="res://scenes/Main Menu/scoreboard/box/gold.tscn" id="2_ra08m"]
+[ext_resource type="PackedScene" uid="uid://bfx32qfqci77i" path="res://scenes/Main Menu/scoreboard/box/silver.tscn" id="3_0sh86"]
+[ext_resource type="PackedScene" uid="uid://c0jdluvyusvc8" path="res://scenes/Main Menu/scoreboard/box/bronze.tscn" id="4_ieybb"]
+[ext_resource type="PackedScene" uid="uid://b7pksb8ax1xs2" path="res://scenes/Main Menu/scoreboard/box/normal.tscn" id="5_1p6ik"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pnwrr"]
+font = ExtResource("1_3ablr")
+
+[node name="Scoreboard" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource("1_sqs3e")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1155.0
+offset_bottom = 644.0
+color = Color(0.00392157, 0.00392157, 0.00392157, 0.278431)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Scoreboard"
+label_settings = SubResource("LabelSettings_pnwrr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+alignment = 1
+script = ExtResource("1_2q6af")
+gold = ExtResource("2_ra08m")
+silver = ExtResource("3_0sh86")
+bronze = ExtResource("4_ieybb")
+normal = ExtResource("5_1p6ik")
+
+[node name="Gold" parent="CanvasLayer/ScrollContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("2_ra08m")]
+layout_mode = 2
+
+[node name="Silver" parent="CanvasLayer/ScrollContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("3_0sh86")]
+layout_mode = 2
+
+[node name="Bronze" parent="CanvasLayer/ScrollContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("4_ieybb")]
+layout_mode = 2
+
+[node name="Normal" parent="CanvasLayer/ScrollContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("5_1p6ik")]
+layout_mode = 2
+
+[node name="scoreboard service" type="HTTPRequest" parent="."]

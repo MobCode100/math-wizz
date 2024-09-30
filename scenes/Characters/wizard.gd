@@ -5,7 +5,14 @@ const SPEED = 200.0
 const JUMP_VELOCITY = -400.0
 @export var selected_answer:int = -1
 @export var selected_sprite: Array[AnimatedSprite2D]
-@export_range(0,1) var sprite_index = 1
+@export_range(0,1) var sprite_index = 0:
+	get: return sprite_index
+	set(value):
+		sprite_index = value
+		for skin in selected_sprite:
+			skin.visible = false
+			selected_sprite[sprite_index].visible = true
+			
 signal answer_change(answer:int)
 signal died
 signal score_updated
@@ -62,6 +69,7 @@ func _on_ready() -> void:
 	init_health_bar()
 	$UI.visible = true
 	$pause.visible = false
+	load_file()
 	
 	
 	
@@ -193,3 +201,22 @@ func update_player_data(data:Dictionary):
 	score = data['points']
 	update_score_ui()
 	update_health_bar()
+
+const FILEPATH = "user://skin.save"
+
+func load_file():
+	if not FileAccess.file_exists(FILEPATH):
+		return
+	var save_file = FileAccess.open(FILEPATH, FileAccess.READ)
+	var json_string = save_file.get_line()
+	var json = JSON.new()
+	var parse_result = json.parse(json_string)
+	if not parse_result == OK:
+		print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+		return
+	var settings_data = json.get_data()
+	from_dict(settings_data)
+
+func from_dict(data:Dictionary):
+	print("sprite index: %d" % data['skin_index'])
+	sprite_index = data['skin_index']

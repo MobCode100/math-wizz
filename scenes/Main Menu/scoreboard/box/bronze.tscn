@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0jdluvyusvc8"]
+
+[ext_resource type="Script" path="res://scenes/Main Menu/scoreboard/box/board.gd" id="1_lwyfr"]
+[ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="1_wbkwf"]
+[ext_resource type="Texture2D" uid="uid://c5j8iqql4hjup" path="res://assets/sprites/bronze cup.png" id="3_a1d7h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1nuow"]
+font = ExtResource("1_wbkwf")
+
+[sub_resource type="LabelSettings" id="LabelSettings_j4hwd"]
+font = ExtResource("1_wbkwf")
+
+[node name="Gold" type="HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+offset_right = 400.0
+offset_bottom = 79.0
+script = ExtResource("1_lwyfr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("3_a1d7h")
+
+[node name="position" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "1."
+label_settings = SubResource("LabelSettings_1nuow")
+
+[node name="name" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "hello"
+label_settings = SubResource("LabelSettings_j4hwd")

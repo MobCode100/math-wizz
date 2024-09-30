@@ -28,4 +28,7 @@ wait_time = 300.0
 one_shot = true
 autostart = true
 
+[node name="score service" type="HTTPRequest" parent="."]
+unique_name_in_owner = true
+
 [connection signal="timeout" from="Time Keeper" to="." method="_on_time_keeper_timeout"]

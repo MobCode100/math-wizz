@@ -1,6 +1,9 @@
 extends Control
 
-
+@export var game_mode:PackedScene
+@export var settings:PackedScene
+@export var character:PackedScene
+@export var scoreboard:PackedScene
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var current_scene_filename = get_tree().current_scene.scene_file_path
@@ -13,8 +16,16 @@ func _process(delta):
 
 
 func _on_play_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/Main Menu/Game Mode.tscn")
+	get_tree().change_scene_to_packed(game_mode)
 
 
 func _on_button_3_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/UI element/settings/settings.tscn")
+	get_tree().change_scene_to_packed(settings)
+
+
+func _on_button_2_pressed() -> void:
+	get_tree().change_scene_to_packed(character)
+
+
+func _on_scoreboard_pressed() -> void:
+	get_tree().change_scene_to_packed(scoreboard)

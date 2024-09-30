@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bm3pdbl7cdihx"]
+[gd_scene load_steps=14 format=3 uid="uid://bm3pdbl7cdihx"]
 
 [ext_resource type="Texture2D" uid="uid://cbwadtab2hml5" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_Bar11a.png" id="1_wfv5k"]
 [ext_resource type="Script" path="res://scenes/UI element/settings/settings.gd" id="1_x4akh"]
 [ext_resource type="Texture2D" uid="uid://pi228l7500kb" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_Handle06a.png" id="2_0r6pq"]
+[ext_resource type="PackedScene" uid="uid://bj6dstrcm0yks" path="res://scenes/map/background.tscn" id="2_amd81"]
 [ext_resource type="AudioStream" uid="uid://b55xtmvwkoslc" path="res://assets/sounds/jump.wav" id="2_sfmun"]
 [ext_resource type="PackedScene" uid="uid://43sc3jjy8c20" path="res://scenes/UI element/button/Button.tscn" id="3_k4i5o"]
 [ext_resource type="Texture2D" uid="uid://bsm81frtrj8j2" path="res://assets/01_Flat_Theme/Style 1 Symbols (39).png" id="4_1srpo"]
@@ -52,6 +53,8 @@ texture_margin_bottom = 2.0
 [node name="Settings" type="CanvasLayer"]
 layer = 2
 script = ExtResource("1_x4akh")
+
+[node name="Background" parent="." instance=ExtResource("2_amd81")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1155.0

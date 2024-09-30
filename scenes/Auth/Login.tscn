@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://css0x8ef3bgki" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_Banner02a.png" id="6_7dbdr"]
 [ext_resource type="FontFile" uid="uid://c53kogtyjwsss" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="7_h3q0g"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tw5in"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s0qdw"]
 texture = ExtResource("2_ico61")
 0:0/0 = 0
 1:0/0 = 0
@@ -139,9 +139,9 @@ texture = ExtResource("2_ico61")
 3:15/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_fk36y"]
-sources/0 = SubResource("TileSetAtlasSource_tw5in")
+sources/0 = SubResource("TileSetAtlasSource_s0qdw")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x7hd6"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r6ort"]
 texture = ExtResource("2_ico61")
 0:0/0 = 0
 1:0/0 = 0
@@ -272,7 +272,7 @@ texture = ExtResource("2_ico61")
 3:15/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_mno2t"]
-sources/0 = SubResource("TileSetAtlasSource_x7hd6")
+sources/0 = SubResource("TileSetAtlasSource_r6ort")
 
 [sub_resource type="LabelSettings" id="LabelSettings_3grw6"]
 font = ExtResource("3_j82u3")

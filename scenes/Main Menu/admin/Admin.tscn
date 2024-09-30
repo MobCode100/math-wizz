@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bq7a0lr7ubebh"]
 
-[ext_resource type="Script" path="res://scenes/Main Menu/admin.gd" id="1_5an1n"]
+[ext_resource type="Script" path="res://scenes/Main Menu/admin/admin.gd" id="1_5an1n"]
 [ext_resource type="Script" path="res://addons/table_container/table_container.gd" id="1_jqf6l"]
 
 [node name="Admin" type="Node2D"]

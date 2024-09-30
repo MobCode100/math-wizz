@@ -78,7 +78,7 @@ font = ExtResource("5_f2u60")
 
 [node name="Wizard" type="CharacterBody2D" node_paths=PackedStringArray("selected_sprite")]
 script = ExtResource("1_k8p31")
-selected_sprite = [NodePath("gray_wizard"), NodePath("blue_wizard")]
+selected_sprite = [NodePath("blue_wizard"), NodePath("gray_wizard")]
 
 [node name="gray_wizard" type="AnimatedSprite2D" parent="."]
 visible = false
