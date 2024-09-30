@@ -4,8 +4,8 @@ services:
    image: mysql
    restart: always
    ports:
-    - 3306:3306
+	- 3306:3306
    environment:
-    MYSQL_ROOT_PASSWORD: math@wizz
+	MYSQL_ROOT_PASSWORD: math@wizz
    volumes:
-    - ./db.sql:/docker-entrypoint-initdb.d/db.sql:ro
+	- ./db.sql:/docker-entrypoint-initdb.d/db.sql:ro

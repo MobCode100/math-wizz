@@ -25,6 +25,8 @@ Music="res://scenes/music.tscn"
 VictoryVariable="*res://victory_variable.gd"
 GlobalSceneManager="*res://scripts/global_scene_manager.gd"
 GlobalSettings="*res://scripts/global_settings.gd"
+Env="*res://scripts/env.gd"
+Session="*res://scripts/session.gd"
 
 [display]
 
