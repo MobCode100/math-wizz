@@ -155,10 +155,10 @@ func update_options(generatedOptions:Array[int]):
 
 func CalcScore(operator:String) -> int:
 	match operator:
-		"+": return 10
-		"-": return 10
-		"x": return 20
-		"/": return 20
+		"+": return enemy.first_number + enemy.second_number + enemy.correct_answer
+		"-": return enemy.first_number + enemy.second_number + enemy.correct_answer
+		"x": return (enemy.first_number + enemy.second_number + enemy.correct_answer) * 2
+		"/": return (enemy.first_number + enemy.second_number + enemy.correct_answer) * 2
 		_: return 0
 
 func update_score_ui(): score_label.text = "score %4d" % score

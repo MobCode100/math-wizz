@@ -108,6 +108,7 @@ zoom = Vector2(2, 2)
 
 [node name="UI" type="CanvasLayer" parent="."]
 editor_description = "HUD for player"
+visible = false
 script = ExtResource("4_fewoe")
 
 [node name="Health" type="Label" parent="UI"]

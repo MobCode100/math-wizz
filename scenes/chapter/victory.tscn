@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmjj04vwifm1a"]
+[gd_scene load_steps=6 format=3 uid="uid://dmjj04vwifm1a"]
 
 [ext_resource type="Script" path="res://scenes/chapter/script/victory.gd" id="1_ht4yn"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="1_kyq3t"]
+[ext_resource type="PackedScene" uid="uid://bj6dstrcm0yks" path="res://scenes/map/background.tscn" id="2_g5s20"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ugfgy"]
 font = ExtResource("1_kyq3t")
@@ -13,30 +14,34 @@ font = ExtResource("1_kyq3t")
 [node name="Victory" type="Node2D"]
 script = ExtResource("1_ht4yn")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="Background" parent="." instance=ExtResource("2_g5s20")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
 offset_right = 1158.0
 offset_bottom = 651.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
 layout_mode = 2
 
-[node name="VICTORY" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="VICTORY" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "VICTORY"
 label_settings = SubResource("LabelSettings_ugfgy")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="point" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="point" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "points : ???"
 label_settings = SubResource("LabelSettings_6afhx")
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Next Chapter"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

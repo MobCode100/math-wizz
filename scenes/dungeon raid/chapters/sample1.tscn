@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://duyi3bjrt3b6i"]
+[gd_scene load_steps=11 format=4 uid="uid://duyi3bjrt3b6i"]
 
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://assets/sprites/world_tileset.png" id="1_k0iij"]
 [ext_resource type="Script" path="res://scenes/dungeon raid/script/level_manager.gd" id="1_s2x7n"]
 [ext_resource type="PackedScene" uid="uid://doj7qr6tw57i0" path="res://scenes/Characters/wizard.tscn" id="2_321kd"]
 [ext_resource type="PackedScene" uid="uid://cusq8qktrmu7k" path="res://scenes/Characters/enemy.tscn" id="4_52pla"]
+[ext_resource type="Script" path="res://scenes/dungeon raid/script/enemy_manager.gd" id="5_ctfbk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bqlmy"]
 texture = ExtResource("1_k0iij")
@@ -373,3 +374,9 @@ shape = SubResource("RectangleShape2D_43hti")
 position = Vector2(561, 610)
 first_number = 4
 second_number = 4
+
+[node name="Enemy Manager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_ctfbk")
+theme_operator = "-"
+question_max_range = 20

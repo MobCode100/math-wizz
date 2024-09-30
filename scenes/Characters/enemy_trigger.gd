@@ -6,9 +6,21 @@ class_name Enemy
 
 const ENEMY = true
 
-@export_range(0,99) var first_number = 2
-@export_range(0,99) var second_number = 2
-@export_enum("+","-","x","/") var operator = "x"
+@export_range(0,99) var first_number = 2:
+	get:return first_number
+	set(value):
+		first_number = value
+		_update_values()
+@export_range(0,99) var second_number = 2:
+	get:return second_number
+	set(value):
+		second_number = value
+		_update_values()
+@export_enum("+","-","x","/") var operator = "x":
+	get:return operator
+	set(value):
+		operator = value
+		_update_values()
 @export_range(0,99) var question_range = 10
 
 @export var main_scene:Node
@@ -72,3 +84,7 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	move_and_slide()
+
+func _update_values():
+		correct_answer = calcCorrectAnswer()
+		question = "%2d %s %2d = " % [first_number,operator,second_number]

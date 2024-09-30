@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bouomv6fb47qg"]
+[gd_scene load_steps=29 format=4 uid="uid://bouomv6fb47qg"]
 
 [ext_resource type="Script" path="res://scenes/Main Menu/chapter select/chapter_select.gd" id="1_h674k"]
 [ext_resource type="Script" path="res://scenes/Main Menu/chapter select/chapter_select_main.gd" id="1_ks3qr"]
@@ -8,7 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://43sc3jjy8c20" path="res://scenes/UI element/button/Button.tscn" id="3_7b5y2"]
 [ext_resource type="PackedScene" uid="uid://jlv0wha67yt7" path="res://scenes/chapter/chapter 2.tscn" id="3_xv6hl"]
 [ext_resource type="PackedScene" uid="uid://bo3kmhb5k7vx1" path="res://scenes/chapter/chapter 3.tscn" id="4_7tv1d"]
+[ext_resource type="Texture2D" uid="uid://bjt2oq7q4ecjv" path="res://assets/chapter image/Screenshot from 2024-09-30 22-24-03.png" id="5_4c7x8"]
 [ext_resource type="PackedScene" uid="uid://2jdbxas1vto0" path="res://scenes/chapter/chapter 4.tscn" id="5_uqvh4"]
+[ext_resource type="Texture2D" uid="uid://brokjdsd7hqxi" path="res://assets/chapter image/Screenshot from 2024-09-30 22-24-43.png" id="8_cr47v"]
+[ext_resource type="Texture2D" uid="uid://b67rttpqbvb86" path="res://assets/chapter image/Screenshot from 2024-09-30 22-25-44.png" id="10_7rhwb"]
+[ext_resource type="Texture2D" uid="uid://d0xh2qp6u27u5" path="res://assets/chapter image/Screenshot from 2024-09-30 22-26-06.png" id="12_41xci"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssv5l"]
 texture = ExtResource("1_qukbt")
@@ -375,38 +379,56 @@ position = Vector2(211, 479)
 sprite_frames = SubResource("SpriteFrames_hc1hg")
 autoplay = "default"
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
 offset_right = 1152.0
 offset_bottom = 644.0
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="HBoxContainer" parent="CanvasLayer/CenterContainer"]
 layout_mode = 2
 
-[node name="Chapter 1" parent="CenterContainer/VBoxContainer" instance=ExtResource("3_7b5y2")]
+[node name="Chapter 1" parent="CanvasLayer/CenterContainer/VBoxContainer" instance=ExtResource("3_7b5y2")]
+custom_minimum_size = Vector2(250, 150)
 layout_mode = 2
 text = "Chapter 1 
 + Addition +"
+icon = ExtResource("5_4c7x8")
+vertical_icon_alignment = 0
+expand_icon = true
 script = ExtResource("1_h674k")
 chapter = ExtResource("2_022am")
 
-[node name="Chapter 2" parent="CenterContainer/VBoxContainer" instance=ExtResource("3_7b5y2")]
+[node name="Chapter 2" parent="CanvasLayer/CenterContainer/VBoxContainer" instance=ExtResource("3_7b5y2")]
+custom_minimum_size = Vector2(250, 150)
 layout_mode = 2
 text = "Chapter 2 
 - Subtrction -"
+icon = ExtResource("8_cr47v")
+vertical_icon_alignment = 0
+expand_icon = true
 script = ExtResource("1_h674k")
 chapter = ExtResource("3_xv6hl")
 
-[node name="Chapter 3" parent="CenterContainer/VBoxContainer" instance=ExtResource("3_7b5y2")]
+[node name="Chapter 3" parent="CanvasLayer/CenterContainer/VBoxContainer" instance=ExtResource("3_7b5y2")]
+custom_minimum_size = Vector2(250, 150)
 layout_mode = 2
 text = "Chapter 3
 x Multiplication x"
+icon = ExtResource("10_7rhwb")
+vertical_icon_alignment = 0
+expand_icon = true
 script = ExtResource("1_h674k")
 chapter = ExtResource("4_7tv1d")
 
-[node name="Chapter 4" parent="CenterContainer/VBoxContainer" instance=ExtResource("3_7b5y2")]
+[node name="Chapter 4" parent="CanvasLayer/CenterContainer/VBoxContainer" instance=ExtResource("3_7b5y2")]
+custom_minimum_size = Vector2(250, 150)
 layout_mode = 2
 text = "Chapter 4 
 / Division /"
+icon = ExtResource("12_41xci")
+vertical_icon_alignment = 0
+expand_icon = true
 script = ExtResource("1_h674k")
 chapter = ExtResource("5_uqvh4")

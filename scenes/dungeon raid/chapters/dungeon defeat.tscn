@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4tvyphja748f"]
+[gd_scene load_steps=6 format=3 uid="uid://b4tvyphja748f"]
 
 [ext_resource type="Script" path="res://scenes/dungeon raid/script/dungeon_defeat.gd" id="1_tmjsm"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="2_13m3i"]
+[ext_resource type="PackedScene" uid="uid://bj6dstrcm0yks" path="res://scenes/map/background.tscn" id="2_jpvwd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ugfgy"]
 font = ExtResource("2_13m3i")
@@ -13,14 +14,18 @@ font = ExtResource("2_13m3i")
 [node name="Victory" type="Node2D"]
 script = ExtResource("1_tmjsm")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="Background" parent="." instance=ExtResource("2_jpvwd")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
 offset_right = 1158.0
 offset_bottom = 651.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
 layout_mode = 2
 
-[node name="cause" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="cause" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "DEFEAT"
@@ -28,16 +33,16 @@ label_settings = SubResource("LabelSettings_ugfgy")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="point" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="point" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "points : ???"
 label_settings = SubResource("LabelSettings_6afhx")
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Next Chapter"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

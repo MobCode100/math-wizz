@@ -44,11 +44,14 @@ func _on_user_update_service_request_completed(result: int, response_code: int, 
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	print(json)
 	print(response_code)
-	#if(response_code == 200):
-		#get_tree().change_scene_to_packed(main_menu)
-		#
+	if(response_code == 200):
+		# because update does not return data
+		Session.player_data['name'] = display_name_input.text
+		
 	#else:
 	error_msg = json['message']
 	if !error_msg.is_empty():
 		message.text = "code %d: %s" % [response_code,error_msg]
 		message.visible = true
+	else:
+		message.visible = false

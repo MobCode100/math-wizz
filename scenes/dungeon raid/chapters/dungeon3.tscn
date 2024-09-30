@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://dxwcpkjdaawbo"]
+[gd_scene load_steps=11 format=4 uid="uid://dxwcpkjdaawbo"]
 
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://assets/sprites/world_tileset.png" id="1_hm7bm"]
 [ext_resource type="Script" path="res://scenes/dungeon raid/script/level_manager.gd" id="1_uwtgt"]
+[ext_resource type="Script" path="res://scenes/dungeon raid/script/enemy_manager.gd" id="3_kxkef"]
+[ext_resource type="PackedScene" uid="uid://doj7qr6tw57i0" path="res://scenes/Characters/wizard.tscn" id="3_uajc4"]
+[ext_resource type="PackedScene" uid="uid://cusq8qktrmu7k" path="res://scenes/Characters/enemy.tscn" id="4_rif5g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yghe6"]
 texture = ExtResource("1_hm7bm")
@@ -364,3 +367,50 @@ tile_set = SubResource("TileSet_s3rbj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Next Level"]
 position = Vector2(1119.81, 609.25)
 shape = SubResource("RectangleShape2D_up174")
+
+[node name="Wizard" parent="." instance=ExtResource("3_uajc4")]
+position = Vector2(54, 598)
+
+[node name="Enemy Manager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_kxkef")
+theme_operator = "x"
+
+[node name="Enemy" parent="Enemy Manager" instance=ExtResource("4_rif5g")]
+position = Vector2(247, 619)
+
+[node name="Enemy2" parent="Enemy Manager" instance=ExtResource("4_rif5g")]
+position = Vector2(409, 696)
+
+[node name="Enemy3" parent="Enemy Manager" instance=ExtResource("4_rif5g")]
+position = Vector2(391, 616)
+
+[node name="Enemy4" parent="Enemy Manager" instance=ExtResource("4_rif5g")]
+position = Vector2(503, 613)
+
+[node name="Enemy5" parent="Enemy Manager" instance=ExtResource("4_rif5g")]
+position = Vector2(662, 615)
+
+[node name="Enemy6" parent="Enemy Manager" instance=ExtResource("4_rif5g")]
+position = Vector2(783, 614)
+
+[node name="Enemy7" parent="Enemy Manager" instance=ExtResource("4_rif5g")]
+position = Vector2(506, 724)
+
+[node name="Enemy8" parent="Enemy Manager" instance=ExtResource("4_rif5g")]
+position = Vector2(635, 724)
+
+[node name="Enemy9" parent="Enemy Manager" instance=ExtResource("4_rif5g")]
+position = Vector2(737, 719)
+
+[node name="Enemy10" parent="Enemy Manager" instance=ExtResource("4_rif5g")]
+position = Vector2(878, 723)
+
+[node name="Enemy11" parent="Enemy Manager" instance=ExtResource("4_rif5g")]
+position = Vector2(938, 612)
+
+[node name="Enemy12" parent="Enemy Manager" instance=ExtResource("4_rif5g")]
+position = Vector2(1022, 617)
+
+[node name="Enemy13" parent="Enemy Manager" instance=ExtResource("4_rif5g")]
+position = Vector2(1086, 615)

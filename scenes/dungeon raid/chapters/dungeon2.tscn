@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://d376i4qphnywn"]
+[gd_scene load_steps=11 format=4 uid="uid://d376i4qphnywn"]
 
 [ext_resource type="Script" path="res://scenes/dungeon raid/script/level_manager.gd" id="1_o134v"]
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://assets/sprites/world_tileset.png" id="1_scw23"]
 [ext_resource type="PackedScene" uid="uid://doj7qr6tw57i0" path="res://scenes/Characters/wizard.tscn" id="2_frr4d"]
+[ext_resource type="Script" path="res://scenes/dungeon raid/script/enemy_manager.gd" id="4_c3hmb"]
+[ext_resource type="PackedScene" uid="uid://cusq8qktrmu7k" path="res://scenes/Characters/enemy.tscn" id="5_x8or5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hpj0x"]
 texture = ExtResource("1_scw23")
@@ -330,3 +332,54 @@ position = Vector2(87, 607)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Next Level"]
 position = Vector2(1455.25, 240.5)
 shape = SubResource("RectangleShape2D_n73yh")
+
+[node name="Enemy Manager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_c3hmb")
+theme_operator = "-"
+question_max_range = 20
+
+[node name="Enemy" parent="Enemy Manager" instance=ExtResource("5_x8or5")]
+position = Vector2(250, 631)
+
+[node name="Enemy2" parent="Enemy Manager" instance=ExtResource("5_x8or5")]
+position = Vector2(391, 633)
+
+[node name="Enemy3" parent="Enemy Manager" instance=ExtResource("5_x8or5")]
+position = Vector2(466, 633)
+
+[node name="Enemy4" parent="Enemy Manager" instance=ExtResource("5_x8or5")]
+position = Vector2(702, 634)
+
+[node name="Enemy5" parent="Enemy Manager" instance=ExtResource("5_x8or5")]
+position = Vector2(821, 629)
+
+[node name="Enemy6" parent="Enemy Manager" instance=ExtResource("5_x8or5")]
+position = Vector2(1018, 633)
+
+[node name="Enemy7" parent="Enemy Manager" instance=ExtResource("5_x8or5")]
+position = Vector2(1122, 628)
+
+[node name="Enemy8" parent="Enemy Manager" instance=ExtResource("5_x8or5")]
+position = Vector2(1200, 631)
+
+[node name="Enemy9" parent="Enemy Manager" instance=ExtResource("5_x8or5")]
+position = Vector2(1337, 631)
+
+[node name="Enemy10" parent="Enemy Manager" instance=ExtResource("5_x8or5")]
+position = Vector2(1252, 554)
+
+[node name="Enemy11" parent="Enemy Manager" instance=ExtResource("5_x8or5")]
+position = Vector2(1121, 499)
+
+[node name="Enemy12" parent="Enemy Manager" instance=ExtResource("5_x8or5")]
+position = Vector2(1320, 443)
+
+[node name="Enemy13" parent="Enemy Manager" instance=ExtResource("5_x8or5")]
+position = Vector2(1223, 376)
+
+[node name="Enemy14" parent="Enemy Manager" instance=ExtResource("5_x8or5")]
+position = Vector2(1353, 313)
+
+[node name="Enemy15" parent="Enemy Manager" instance=ExtResource("5_x8or5")]
+position = Vector2(1410, 248)

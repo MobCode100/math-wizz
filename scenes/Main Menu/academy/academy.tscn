@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://oxpvar824fk7"]
+
+[ext_resource type="Script" path="res://scenes/Main Menu/academy/academy.gd" id="1_7ml4j"]
+[ext_resource type="PackedScene" uid="uid://bj6dstrcm0yks" path="res://scenes/map/background.tscn" id="1_xdaln"]
+[ext_resource type="PackedScene" uid="uid://43sc3jjy8c20" path="res://scenes/UI element/button/Button.tscn" id="2_bo56j"]
+[ext_resource type="Texture2D" uid="uid://b5i65yk6nn3aq" path="res://assets/sprites/add.png" id="4_io65p"]
+[ext_resource type="Texture2D" uid="uid://c46m1uhntvf5j" path="res://assets/sub.png" id="5_rtjnk"]
+[ext_resource type="Texture2D" uid="uid://c4gxb8vuj51gh" path="res://assets/sprites/multi.png" id="6_h4lba"]
+[ext_resource type="Texture2D" uid="uid://dhr73pmjlnifi" path="res://assets/sprites/div.png" id="7_ymjas"]
+
+[node name="Academy" type="Node2D"]
+script = ExtResource("1_7ml4j")
+
+[node name="Background" parent="." instance=ExtResource("1_xdaln")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="add" parent="CanvasLayer/HBoxContainer" instance=ExtResource("2_bo56j")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Addition"
+icon = ExtResource("4_io65p")
+vertical_icon_alignment = 0
+
+[node name="sub" parent="CanvasLayer/HBoxContainer" instance=ExtResource("2_bo56j")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "subtraction"
+icon = ExtResource("5_rtjnk")
+vertical_icon_alignment = 0
+
+[node name="multi" parent="CanvasLayer/HBoxContainer" instance=ExtResource("2_bo56j")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "multiplication
+"
+icon = ExtResource("6_h4lba")
+vertical_icon_alignment = 0
+
+[node name="div" parent="CanvasLayer/HBoxContainer" instance=ExtResource("2_bo56j")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "division"
+icon = ExtResource("7_ymjas")
+vertical_icon_alignment = 0
+
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/add" to="." method="_on_add_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/sub" to="." method="_on_sub_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/multi" to="." method="_on_multi_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/div" to="." method="_on_div_pressed"]

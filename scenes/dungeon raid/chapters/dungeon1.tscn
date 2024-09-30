@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://bou5wqs5cc8dn"]
+[gd_scene load_steps=11 format=4 uid="uid://bou5wqs5cc8dn"]
 
 [ext_resource type="Script" path="res://scenes/dungeon raid/script/level_manager.gd" id="1_dx7xm"]
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://assets/sprites/world_tileset.png" id="2_4d1ys"]
 [ext_resource type="PackedScene" uid="uid://doj7qr6tw57i0" path="res://scenes/Characters/wizard.tscn" id="3_213np"]
+[ext_resource type="PackedScene" uid="uid://cusq8qktrmu7k" path="res://scenes/Characters/enemy.tscn" id="4_0sqw6"]
+[ext_resource type="Script" path="res://scenes/dungeon raid/script/enemy_manager.gd" id="4_p1ama"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i2l11"]
 texture = ExtResource("2_4d1ys")
@@ -332,3 +334,81 @@ shape = SubResource("RectangleShape2D_rrigr")
 
 [node name="Wizard" parent="." instance=ExtResource("3_213np")]
 position = Vector2(56, 611)
+
+[node name="Enemy Manager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_p1ama")
+theme_operator = "+"
+question_max_range = 20
+
+[node name="Enemy" parent="Enemy Manager" instance=ExtResource("4_0sqw6")]
+position = Vector2(264, 618)
+first_number = 1
+second_number = 1
+operator = "+"
+
+[node name="Enemy2" parent="Enemy Manager" instance=ExtResource("4_0sqw6")]
+position = Vector2(426, 621)
+operator = "+"
+
+[node name="Enemy3" parent="Enemy Manager" instance=ExtResource("4_0sqw6")]
+position = Vector2(635, 591)
+first_number = 4
+second_number = 5
+operator = "+"
+
+[node name="Enemy4" parent="Enemy Manager" instance=ExtResource("4_0sqw6")]
+position = Vector2(970, 625)
+first_number = 6
+second_number = 4
+operator = "+"
+
+[node name="Enemy5" parent="Enemy Manager" instance=ExtResource("4_0sqw6")]
+position = Vector2(718, 560)
+first_number = 8
+second_number = 7
+operator = "+"
+
+[node name="Enemy6" parent="Enemy Manager" instance=ExtResource("4_0sqw6")]
+position = Vector2(859, 526)
+first_number = 6
+second_number = 5
+operator = "+"
+
+[node name="Enemy7" parent="Enemy Manager" instance=ExtResource("4_0sqw6")]
+position = Vector2(1068, 621)
+first_number = 9
+second_number = 5
+operator = "+"
+
+[node name="Enemy8" parent="Enemy Manager" instance=ExtResource("4_0sqw6")]
+position = Vector2(1289, 621)
+first_number = 9
+second_number = 8
+operator = "+"
+
+[node name="Enemy9" parent="Enemy Manager" instance=ExtResource("4_0sqw6")]
+position = Vector2(1325, 717)
+first_number = 9
+operator = "+"
+
+[node name="Enemy10" parent="Enemy Manager" instance=ExtResource("4_0sqw6")]
+position = Vector2(1417, 621)
+first_number = 11
+second_number = 4
+operator = "+"
+
+[node name="Enemy11" parent="Enemy Manager" instance=ExtResource("4_0sqw6")]
+position = Vector2(1593, 621)
+first_number = 15
+second_number = 3
+operator = "+"
+
+[node name="Enemy12" parent="Enemy Manager" instance=ExtResource("4_0sqw6")]
+position = Vector2(1674, 623)
+
+[node name="Enemy13" parent="Enemy Manager" instance=ExtResource("4_0sqw6")]
+position = Vector2(1800, 622)
+
+[node name="Enemy14" parent="Enemy Manager" instance=ExtResource("4_0sqw6")]
+position = Vector2(1994, 621)
