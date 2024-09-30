@@ -5,9 +5,6 @@ extends Node2D
 @onready var username_input = %usernameInput
 @onready var password_input = %passwordInput
 
-@export var admin:PackedScene
-@export var main_menu:PackedScene
-@export var register:PackedScene
 var error_msg:String
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,10 +39,10 @@ func _on_request_completed(result, response_code, headers, body):
 		#######################################################
 		Session.player_data = json.data[0]
 		if(Session.player_data.is_admin):
-			get_tree().change_scene_to_packed(admin)
+			get_tree().change_scene_to_file("res://scenes/Main Menu/admin/Admin.tscn")
 			return
 		
-		get_tree().change_scene_to_packed(main_menu)
+		get_tree().change_scene_to_file("res://scenes/Main Menu/Main Menu.tscn")
 	else:
 		error_msg = json['message']
 		if !error_msg.is_empty():
@@ -54,4 +51,4 @@ func _on_request_completed(result, response_code, headers, body):
 
 
 func _on_button_2_pressed() -> void:
-	get_tree().change_scene_to_packed(register)
+	get_tree().change_scene_to_file("res://scenes/Auth/register/register.tscn")
