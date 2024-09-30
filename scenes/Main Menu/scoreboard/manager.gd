@@ -5,26 +5,15 @@ extends VBoxContainer
 @export var bronze:PackedScene
 @export var normal:PackedScene
 
-var sorted_name:Array[String] = [
-	"gold",
-	"silver",
-	"bronze",
-	"loser",
-	"loser",
-	"loser",
-	"loser",
-	"loser",
-	"loser",
-	"loser",
-	"loser",
-	"loser",
-	"loser",
-	"loser",
-	"loser",
-	"loser",
-	"loser",
-	
-]
+
+
+var sorted_name:Array = []:
+	get: return sorted_name
+	set(value):
+		sorted_name = value
+		display()
+
+var users:Array[Dictionary]
 
 
 # Called when the node enters the scene tree for the first time.
@@ -54,6 +43,5 @@ func display():
 		var box_instance = box.instantiate()
 		add_child(box_instance)
 		box_instance.index = index
-		box_instance.username = sorted_name[index]
-		
+		box_instance.username = "%s - %d points" % [sorted_name[index]['name'],sorted_name[index]['highest_score']]
 		

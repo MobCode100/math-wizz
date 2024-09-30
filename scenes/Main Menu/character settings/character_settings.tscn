@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bjypcysu4lt3a"]
+[gd_scene load_steps=18 format=3 uid="uid://bjypcysu4lt3a"]
 
 [ext_resource type="Script" path="res://scenes/Main Menu/character settings/character setting.gd" id="1_gytaa"]
 [ext_resource type="Texture2D" uid="uid://d17edwqeelfx8" path="res://assets/AnimationSheet_Character.png" id="1_k1qin"]
@@ -32,6 +32,10 @@ font = ExtResource("1_vu16e")
 [sub_resource type="LabelSettings" id="LabelSettings_270mp"]
 font = ExtResource("1_vu16e")
 font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_w5rf5"]
+font = ExtResource("1_vu16e")
+font_size = 12
 
 [node name="CharacterSettings" type="Node2D"]
 script = ExtResource("1_gytaa")
@@ -128,8 +132,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="display name" type="LineEdit" parent="CanvasLayer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
+
+[node name="message" type="Label" parent="CanvasLayer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "message"
+label_settings = SubResource("LabelSettings_w5rf5")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Save" parent="CanvasLayer/VBoxContainer" instance=ExtResource("4_cxy3a")]
 unique_name_in_owner = true
@@ -161,3 +174,4 @@ unique_name_in_owner = true
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Character Selector/skin Container/select right" to="CanvasLayer/VBoxContainer/Character Selector" method="_on_select_right_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="CanvasLayer/back" to="." method="_on_back_pressed"]
+[connection signal="request_completed" from="user update service" to="." method="_on_user_update_service_request_completed"]

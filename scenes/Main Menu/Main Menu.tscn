@@ -409,6 +409,11 @@ text = "Academy"
 layout_mode = 2
 text = "Settings"
 
+[node name="character" parent="VBoxContainer" instance=ExtResource("3_8mgcx")]
+layout_mode = 2
+text = "character
+"
+
 [node name="scoreboard" parent="VBoxContainer" instance=ExtResource("3_8mgcx")]
 layout_mode = 2
 text = "Scoreboard"
@@ -484,4 +489,5 @@ expand_icon = true
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="VBoxContainer/character" to="." method="_on_character_pressed"]
 [connection signal="pressed" from="VBoxContainer/scoreboard" to="." method="_on_scoreboard_pressed"]

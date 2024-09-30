@@ -1,17 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://168txfy5owhp"]
+[gd_scene load_steps=12 format=3 uid="uid://168txfy5owhp"]
 
 [ext_resource type="Script" path="res://scenes/Main Menu/scoreboard/manager.gd" id="1_2q6af"]
 [ext_resource type="FontFile" uid="uid://c53kogtyjwsss" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_3ablr"]
+[ext_resource type="Script" path="res://scenes/Main Menu/scoreboard/scoreboard.gd" id="1_8e65p"]
 [ext_resource type="PackedScene" uid="uid://bj6dstrcm0yks" path="res://scenes/map/background.tscn" id="1_sqs3e"]
 [ext_resource type="PackedScene" uid="uid://bl0xk6mhay8mp" path="res://scenes/Main Menu/scoreboard/box/gold.tscn" id="2_ra08m"]
+[ext_resource type="PackedScene" uid="uid://dow4wfydymooy" path="res://scenes/Main Menu/Main Menu.tscn" id="2_x12nd"]
 [ext_resource type="PackedScene" uid="uid://bfx32qfqci77i" path="res://scenes/Main Menu/scoreboard/box/silver.tscn" id="3_0sh86"]
 [ext_resource type="PackedScene" uid="uid://c0jdluvyusvc8" path="res://scenes/Main Menu/scoreboard/box/bronze.tscn" id="4_ieybb"]
 [ext_resource type="PackedScene" uid="uid://b7pksb8ax1xs2" path="res://scenes/Main Menu/scoreboard/box/normal.tscn" id="5_1p6ik"]
+[ext_resource type="Texture2D" uid="uid://cm8ig2oxdx387" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_ButtonArrow01a.png" id="9_c3616"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pnwrr"]
 font = ExtResource("1_3ablr")
 
 [node name="Scoreboard" type="Node2D"]
+script = ExtResource("1_8e65p")
+main_menu = ExtResource("2_x12nd")
 
 [node name="Background" parent="." instance=ExtResource("1_sqs3e")]
 
@@ -44,7 +49,8 @@ label_settings = SubResource("LabelSettings_pnwrr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ScrollContainer/VBoxContainer2"]
+[node name="board" type="VBoxContainer" parent="CanvasLayer/ScrollContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
@@ -55,16 +61,30 @@ silver = ExtResource("3_0sh86")
 bronze = ExtResource("4_ieybb")
 normal = ExtResource("5_1p6ik")
 
-[node name="Gold" parent="CanvasLayer/ScrollContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("2_ra08m")]
+[node name="Gold" parent="CanvasLayer/ScrollContainer/VBoxContainer2/board" instance=ExtResource("2_ra08m")]
 layout_mode = 2
 
-[node name="Silver" parent="CanvasLayer/ScrollContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("3_0sh86")]
+[node name="Silver" parent="CanvasLayer/ScrollContainer/VBoxContainer2/board" instance=ExtResource("3_0sh86")]
 layout_mode = 2
 
-[node name="Bronze" parent="CanvasLayer/ScrollContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("4_ieybb")]
+[node name="Bronze" parent="CanvasLayer/ScrollContainer/VBoxContainer2/board" instance=ExtResource("4_ieybb")]
 layout_mode = 2
 
-[node name="Normal" parent="CanvasLayer/ScrollContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("5_1p6ik")]
+[node name="Normal" parent="CanvasLayer/ScrollContainer/VBoxContainer2/board" instance=ExtResource("5_1p6ik")]
 layout_mode = 2
+
+[node name="back" type="TextureButton" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 15.0
+offset_top = 23.0
+offset_right = 87.0
+offset_bottom = 93.0
+texture_normal = ExtResource("9_c3616")
+stretch_mode = 5
+flip_h = true
 
 [node name="scoreboard service" type="HTTPRequest" parent="."]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="CanvasLayer/back" to="." method="_on_back_pressed"]
+[connection signal="request_completed" from="scoreboard service" to="." method="_on_scoreboard_service_request_completed"]

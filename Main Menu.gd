@@ -23,9 +23,10 @@ func _on_button_3_pressed() -> void:
 	get_tree().change_scene_to_packed(settings)
 
 
-func _on_button_2_pressed() -> void:
-	get_tree().change_scene_to_packed(character)
-
 
 func _on_scoreboard_pressed() -> void:
 	get_tree().change_scene_to_packed(scoreboard)
+
+
+func _on_character_pressed() -> void:
+	get_tree().change_scene_to_packed(character)
