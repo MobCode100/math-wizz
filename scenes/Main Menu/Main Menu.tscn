@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://dow4wfydymooy"]
+[gd_scene load_steps=26 format=4 uid="uid://dow4wfydymooy"]
 
 [ext_resource type="Script" path="res://Main Menu.gd" id="1_11ia6"]
 [ext_resource type="PackedScene" uid="uid://k3ml8wocc65u" path="res://scenes/Main Menu/Game Mode.tscn" id="2_51o2r"]
@@ -6,11 +6,10 @@
 [ext_resource type="FontFile" uid="uid://c53kogtyjwsss" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_4bjmt"]
 [ext_resource type="PackedScene" uid="uid://43sc3jjy8c20" path="res://scenes/UI element/button/Button.tscn" id="3_8mgcx"]
 [ext_resource type="PackedScene" uid="uid://bm3pdbl7cdihx" path="res://scenes/UI element/settings/settings.tscn" id="3_ovuln"]
-[ext_resource type="PackedScene" uid="uid://bjypcysu4lt3a" path="res://scenes/Main Menu/character settings/character_settings.tscn" id="4_0w7i1"]
 [ext_resource type="Texture2D" uid="uid://bsm81frtrj8j2" path="res://assets/01_Flat_Theme/Style 1 Symbols (39).png" id="4_a45nj"]
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://assets/sprites/world_tileset.png" id="4_ktjjl"]
 [ext_resource type="Texture2D" uid="uid://d17edwqeelfx8" path="res://assets/AnimationSheet_Character.png" id="5_ix6ud"]
-[ext_resource type="PackedScene" uid="uid://168txfy5owhp" path="res://scenes/Main Menu/scoreboard/scoreboard.tscn" id="5_y5fjn"]
+[ext_resource type="PackedScene" uid="uid://bq7a0lr7ubebh" path="res://scenes/Main Menu/admin/Admin.tscn" id="5_y5fjn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4x688"]
 texture = ExtResource("4_ktjjl")
@@ -371,7 +370,7 @@ grow_vertical = 2
 script = ExtResource("1_11ia6")
 game_mode = ExtResource("2_51o2r")
 settings = ExtResource("3_ovuln")
-character = ExtResource("4_0w7i1")
+character = ExtResource("5_y5fjn")
 scoreboard = ExtResource("5_y5fjn")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
