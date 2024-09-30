@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Math Wizz"
-run/main_scene="res://scenes/Auth/Login.tscn"
+run/main_scene="res://scenes/Auth/login/Login.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
