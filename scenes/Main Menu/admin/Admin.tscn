@@ -1,12 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://bq7a0lr7ubebh"]
+[gd_scene load_steps=8 format=3 uid="uid://bq7a0lr7ubebh"]
 
 [ext_resource type="Script" path="res://scenes/Main Menu/admin/admin.gd" id="1_5an1n"]
 [ext_resource type="Script" path="res://addons/table_container/table_container.gd" id="1_jqf6l"]
+[ext_resource type="PackedScene" uid="uid://43sc3jjy8c20" path="res://scenes/UI element/button/Button.tscn" id="3_skyd1"]
+[ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="3_t2bmc"]
+
+[sub_resource type="Theme" id="Theme_fmmi5"]
+default_font = ExtResource("3_t2bmc")
+
+[sub_resource type="Theme" id="Theme_ttf8w"]
+default_font = ExtResource("3_t2bmc")
+
+[sub_resource type="Theme" id="Theme_2aclk"]
+default_font = ExtResource("3_t2bmc")
 
 [node name="Admin" type="Node2D"]
 script = ExtResource("1_5an1n")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="AcceptDialog" type="AcceptDialog" parent="CanvasLayer"]
+initial_position = 1
+size = Vector2i(266, 100)
+theme = SubResource("Theme_fmmi5")
+dialog_text = "Username not found!"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="CanvasLayer"]
+initial_position = 1
+size = Vector2i(257, 100)
+theme = SubResource("Theme_ttf8w")
+ok_button_text = "Yes"
+cancel_button_text = "No"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -23,12 +47,51 @@ size_flags_vertical = 3
 [node name="TableContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = SubResource("Theme_2aclk")
 alignment = 1
 script = ExtResource("1_jqf6l")
 separation_horizontal = null
 separation_vertical = null
 
-[node name="Note" type="Label" parent="CanvasLayer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-text = "Double tap any value to edit (except score)."
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Username" type="LineEdit" parent="CanvasLayer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/minimum_character_width = 15
+theme_override_fonts/font = ExtResource("3_t2bmc")
+placeholder_text = "Select username"
+
+[node name="Edit" parent="CanvasLayer/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_skyd1")]
+layout_mode = 2
+text = "Edit"
+
+[node name="Delete" parent="CanvasLayer/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_skyd1")]
+layout_mode = 2
+text = "Delete"
+
+[node name="Register" parent="CanvasLayer/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_skyd1")]
+layout_mode = 2
+text = "Register"
+
+[node name="FetchUsersList" type="HTTPRequest" parent="."]
+
+[node name="EditUser" type="HTTPRequest" parent="."]
+
+[node name="DeleteUser" type="HTTPRequest" parent="."]
+
+[node name="DeleteConfirmedUser" type="HTTPRequest" parent="."]
+
+[connection signal="confirmed" from="CanvasLayer/ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/MarginContainer/HBoxContainer/Edit" to="." method="_on_edit_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/MarginContainer/HBoxContainer/Delete" to="." method="_on_delete_pressed"]
+[connection signal="request_completed" from="FetchUsersList" to="." method="_on_http_request_completed"]
+[connection signal="request_completed" from="EditUser" to="." method="_on_edit_user_request_completed"]
+[connection signal="request_completed" from="DeleteUser" to="." method="_on_delete_user_request_completed"]
+[connection signal="request_completed" from="DeleteConfirmedUser" to="." method="_on_delete_confirmed_user_request_completed"]

@@ -1,0 +1,114 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3dor3ee8c856"]
+
+[ext_resource type="Script" path="res://scenes/Main Menu/admin/edit_user.gd" id="1_3s73k"]
+[ext_resource type="Script" path="res://addons/table_container/table_container.gd" id="2_k85ca"]
+[ext_resource type="PackedScene" uid="uid://43sc3jjy8c20" path="res://scenes/UI element/button/Button.tscn" id="3_o8tqm"]
+[ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="3_rskfa"]
+
+[node name="EditUser" type="Node2D"]
+script = ExtResource("1_3s73k")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -343.0
+offset_top = -74.5
+offset_right = 343.0
+offset_bottom = 74.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="TableContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("2_k85ca")
+separation_horizontal = null
+separation_vertical = null
+
+[node name="UsernameRow" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/TableContainer"]
+layout_mode = 2
+
+[node name="UsernameLabel" type="Label" parent="CanvasLayer/VBoxContainer/TableContainer/UsernameRow"]
+custom_minimum_size = Vector2(134, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_rskfa")
+text = "Username: "
+
+[node name="UsernameLineEdit" type="LineEdit" parent="CanvasLayer/VBoxContainer/TableContainer/UsernameRow"]
+custom_minimum_size = Vector2(548, 0)
+layout_mode = 2
+theme_override_constants/minimum_character_width = 30
+theme_override_fonts/font = ExtResource("3_rskfa")
+editable = false
+
+[node name="NameRow" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/TableContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="CanvasLayer/VBoxContainer/TableContainer/NameRow"]
+custom_minimum_size = Vector2(134, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_rskfa")
+text = "Name: "
+
+[node name="NameLineEdit" type="LineEdit" parent="CanvasLayer/VBoxContainer/TableContainer/NameRow"]
+custom_minimum_size = Vector2(548, 0)
+layout_mode = 2
+theme_override_constants/minimum_character_width = 30
+theme_override_fonts/font = ExtResource("3_rskfa")
+
+[node name="PasswordRow" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/TableContainer"]
+layout_mode = 2
+
+[node name="PasswordLabel" type="Label" parent="CanvasLayer/VBoxContainer/TableContainer/PasswordRow"]
+custom_minimum_size = Vector2(134, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_rskfa")
+text = "Password: "
+
+[node name="PasswordLineEdit" type="LineEdit" parent="CanvasLayer/VBoxContainer/TableContainer/PasswordRow"]
+custom_minimum_size = Vector2(548, 0)
+layout_mode = 2
+theme_override_constants/minimum_character_width = 30
+theme_override_fonts/font = ExtResource("3_rskfa")
+
+[node name="AdminRow" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/TableContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="AdminLabel" type="Label" parent="CanvasLayer/VBoxContainer/TableContainer/AdminRow"]
+custom_minimum_size = Vector2(134, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_rskfa")
+text = "Admin: "
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/VBoxContainer/TableContainer/AdminRow"]
+custom_minimum_size = Vector2(548, 0)
+layout_mode = 2
+alignment = 1
+icon_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Save" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("3_o8tqm")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SAVE"
+
+[node name="Back" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("3_o8tqm")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CANCEL"
+
+[node name="Save" type="HTTPRequest" parent="."]
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="request_completed" from="Save" to="." method="_on_save_request_completed"]
