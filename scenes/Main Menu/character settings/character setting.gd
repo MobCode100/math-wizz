@@ -47,10 +47,7 @@ func _on_user_update_service_request_completed(result: int, response_code: int, 
 		# because update does not return data
 		Session.player_data['name'] = display_name_input.text
 		
-	#else:
 	error_msg = json['message']
 	if !error_msg.is_empty():
-		message.text = "%s" % [response_code,error_msg]
+		message.text = "%s" % error_msg
 		message.visible = true
-	else:
-		message.visible = false
