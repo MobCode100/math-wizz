@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://168txfy5owhp"]
+[gd_scene load_steps=11 format=3 uid="uid://168txfy5owhp"]
 
 [ext_resource type="Script" path="res://scenes/Main Menu/scoreboard/manager.gd" id="1_2q6af"]
 [ext_resource type="FontFile" uid="uid://c53kogtyjwsss" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_3ablr"]
 [ext_resource type="Script" path="res://scenes/Main Menu/scoreboard/scoreboard.gd" id="1_8e65p"]
 [ext_resource type="PackedScene" uid="uid://bj6dstrcm0yks" path="res://scenes/map/background.tscn" id="1_sqs3e"]
 [ext_resource type="PackedScene" uid="uid://bl0xk6mhay8mp" path="res://scenes/Main Menu/scoreboard/box/gold.tscn" id="2_ra08m"]
-[ext_resource type="PackedScene" uid="uid://dow4wfydymooy" path="res://scenes/Main Menu/Main Menu.tscn" id="2_x12nd"]
 [ext_resource type="PackedScene" uid="uid://bfx32qfqci77i" path="res://scenes/Main Menu/scoreboard/box/silver.tscn" id="3_0sh86"]
 [ext_resource type="PackedScene" uid="uid://c0jdluvyusvc8" path="res://scenes/Main Menu/scoreboard/box/bronze.tscn" id="4_ieybb"]
 [ext_resource type="PackedScene" uid="uid://b7pksb8ax1xs2" path="res://scenes/Main Menu/scoreboard/box/normal.tscn" id="5_1p6ik"]
@@ -16,7 +15,6 @@ font = ExtResource("1_3ablr")
 
 [node name="Scoreboard" type="Node2D"]
 script = ExtResource("1_8e65p")
-main_menu = ExtResource("2_x12nd")
 
 [node name="Background" parent="." instance=ExtResource("1_sqs3e")]
 

@@ -27,7 +27,8 @@ func _on_scoreboard_service_request_completed(result: int, response_code: int, h
 	if(response_code == 200):		
 		users = json['data']
 		users.sort_custom(sort_custom)
-		board.sorted_name = users
+		#users.filter(filter_custom)
+		board.sorted_name = users.filter(filter_custom)
 	#else:
 		#error_msg = json['message']
 		#if !error_msg.is_empty():
@@ -36,6 +37,9 @@ func _on_scoreboard_service_request_completed(result: int, response_code: int, h
 
 func sort_custom(a:Dictionary,b:Dictionary):
 	return a['highest_score'] > b['highest_score']
+
+func filter_custom(a:Dictionary):
+	return !a['is_admin']
 
 
 func _on_back_pressed() -> void:
