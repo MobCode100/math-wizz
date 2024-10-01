@@ -1,9 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://bjypcysu4lt3a"]
+[gd_scene load_steps=17 format=3 uid="uid://bjypcysu4lt3a"]
 
 [ext_resource type="Script" path="res://scenes/Main Menu/character settings/character setting.gd" id="1_gytaa"]
 [ext_resource type="Texture2D" uid="uid://d17edwqeelfx8" path="res://assets/AnimationSheet_Character.png" id="1_k1qin"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="1_vu16e"]
-[ext_resource type="PackedScene" uid="uid://dow4wfydymooy" path="res://scenes/Main Menu/Main Menu.tscn" id="2_1eax5"]
 [ext_resource type="Texture2D" uid="uid://cykhetrvil23v" path="res://assets/wizard char.png" id="2_l1n10"]
 [ext_resource type="Script" path="res://scenes/Main Menu/character settings/character_selector.gd" id="2_p6ogu"]
 [ext_resource type="PackedScene" uid="uid://bj6dstrcm0yks" path="res://scenes/map/background.tscn" id="3_mmxvc"]
@@ -39,7 +38,6 @@ font_size = 12
 
 [node name="CharacterSettings" type="Node2D"]
 script = ExtResource("1_gytaa")
-main_menu = ExtResource("2_1eax5")
 
 [node name="Background" parent="." instance=ExtResource("3_mmxvc")]
 

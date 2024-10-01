@@ -46,8 +46,10 @@ func _on_request_completed(result, response_code, headers, body):
 	else:
 		error_msg = json['message']
 		if !error_msg.is_empty():
-			error_label.text = "code %d: %s" % [response_code,error_msg]
-			error_label.visible = true
+			error_label.text = "%s" % error_msg
+		else:
+			error_label.text = "an error has accured"
+		error_label.visible = true
 
 
 func _on_button_2_pressed() -> void:

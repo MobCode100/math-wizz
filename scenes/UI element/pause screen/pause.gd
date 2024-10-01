@@ -31,3 +31,8 @@ func _on_settings_pressed() -> void:
 	pause_scene.get_parent().remove_child(pause_scene)
 	#add_child(settings)
 	
+
+
+func _on_restart_pressed() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene()

@@ -7,7 +7,6 @@ extends Node2D
 
 var error_msg:String
 
-@export var main_menu:PackedScene
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	message.visible = false
@@ -51,7 +50,7 @@ func _on_user_update_service_request_completed(result: int, response_code: int, 
 	#else:
 	error_msg = json['message']
 	if !error_msg.is_empty():
-		message.text = "code %d: %s" % [response_code,error_msg]
+		message.text = "%s" % [response_code,error_msg]
 		message.visible = true
 	else:
 		message.visible = false

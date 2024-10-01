@@ -4,7 +4,6 @@ var users:Array
 @onready var api = %"scoreboard service"
 @onready var board = %board
 
-@export var main_menu:PackedScene
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	get_users()
@@ -36,7 +35,7 @@ func _on_scoreboard_service_request_completed(result: int, response_code: int, h
 			#error_label.visible = true
 
 func sort_custom(a:Dictionary,b:Dictionary):
-	return a['highest_score'] < b['highest_score']
+	return a['highest_score'] > b['highest_score']
 
 
 func _on_back_pressed() -> void:

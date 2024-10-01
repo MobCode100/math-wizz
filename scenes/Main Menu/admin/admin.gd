@@ -132,3 +132,13 @@ func _on_confirmation_dialog_confirmed() -> void:
 func _on_delete_confirmed_user_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
 	if(response_code == 200):
 		get_tree().change_scene_to_file("res://scenes/Main Menu/admin/Admin.tscn")
+
+
+func _on_register_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/Auth/register/register.tscn")
+
+
+func _on_button_pressed() -> void:
+	Session.player_data = null
+	get_tree().change_scene_to_file("res://scenes/Auth/login/Login.tscn")
+	

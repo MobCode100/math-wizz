@@ -36,3 +36,7 @@ func _on_button_pressed() -> void:
 func post_score(point:int):
 	pass
 	
+
+
+func _on_leaderboard_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/Main Menu/scoreboard/scoreboard.tscn")

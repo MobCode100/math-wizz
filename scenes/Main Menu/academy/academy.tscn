@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://oxpvar824fk7"]
+[gd_scene load_steps=9 format=3 uid="uid://oxpvar824fk7"]
 
 [ext_resource type="Script" path="res://scenes/Main Menu/academy/academy.gd" id="1_7ml4j"]
 [ext_resource type="PackedScene" uid="uid://bj6dstrcm0yks" path="res://scenes/map/background.tscn" id="1_xdaln"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c46m1uhntvf5j" path="res://assets/sub.png" id="5_rtjnk"]
 [ext_resource type="Texture2D" uid="uid://c4gxb8vuj51gh" path="res://assets/sprites/multi.png" id="6_h4lba"]
 [ext_resource type="Texture2D" uid="uid://dhr73pmjlnifi" path="res://assets/sprites/div.png" id="7_ymjas"]
+[ext_resource type="Texture2D" uid="uid://cm8ig2oxdx387" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_ButtonArrow01a.png" id="8_02oqm"]
 
 [node name="Academy" type="Node2D"]
 script = ExtResource("1_7ml4j")
@@ -30,38 +31,52 @@ grow_vertical = 2
 
 [node name="add" parent="CanvasLayer/HBoxContainer" instance=ExtResource("2_bo56j")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(200, 150)
 layout_mode = 2
 text = "Addition"
 icon = ExtResource("4_io65p")
 vertical_icon_alignment = 0
+expand_icon = true
 
 [node name="sub" parent="CanvasLayer/HBoxContainer" instance=ExtResource("2_bo56j")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(200, 150)
 layout_mode = 2
 text = "subtraction"
 icon = ExtResource("5_rtjnk")
 vertical_icon_alignment = 0
+expand_icon = true
 
 [node name="multi" parent="CanvasLayer/HBoxContainer" instance=ExtResource("2_bo56j")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(200, 150)
 layout_mode = 2
 text = "multiplication
 "
 icon = ExtResource("6_h4lba")
 vertical_icon_alignment = 0
+expand_icon = true
 
 [node name="div" parent="CanvasLayer/HBoxContainer" instance=ExtResource("2_bo56j")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(200, 150)
 layout_mode = 2
 text = "division"
 icon = ExtResource("7_ymjas")
 vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
+offset_left = 19.0
+offset_top = 17.0
+offset_right = 96.0
+offset_bottom = 84.0
+texture_normal = ExtResource("8_02oqm")
+stretch_mode = 5
+flip_h = true
 
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/add" to="." method="_on_add_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/sub" to="." method="_on_sub_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/multi" to="." method="_on_multi_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/div" to="." method="_on_div_pressed"]
+[connection signal="pressed" from="CanvasLayer/TextureButton" to="." method="_on_texture_button_pressed"]

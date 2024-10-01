@@ -24,12 +24,11 @@ script = ExtResource("2_5n0a2")
 
 [node name="Time Keeper" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 60.0
+wait_time = 180.0
 one_shot = true
 autostart = true
 
 [node name="score service" type="HTTPRequest" parent="."]
-unique_name_in_owner = true
 
 [connection signal="timeout" from="Time Keeper" to="." method="_on_time_keeper_timeout"]
 [connection signal="request_completed" from="score service" to="." method="_on_score_service_request_completed"]

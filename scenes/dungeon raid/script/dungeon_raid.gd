@@ -4,7 +4,7 @@ extends Node
 @onready var player_data = %"Player Data"
 @onready var scene_selector = %"Scene Selector"
 @onready var time_keeper = %"Time Keeper"
-@onready var api = %"score service"
+@onready var api = $"score service"
 @export var defeat_scene:PackedScene
 
 # Called when the node enters the scene tree for the first time.

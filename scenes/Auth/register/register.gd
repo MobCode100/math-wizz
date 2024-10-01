@@ -8,7 +8,6 @@ extends Node2D
 
 var error_msg:String
 
-@export var login:PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -38,13 +37,15 @@ func _on_register_request_completed(result: int, response_code: int, headers: Pa
 	print(json)
 	print(response_code)
 	if(response_code == 200):		
-		get_tree().change_scene_to_packed(login)
+		get_tree().change_scene_to_file("res://scenes/Auth/login/Login.tscn")
 	else:
 		error_msg = json['message']
 		if !error_msg.is_empty():
-			error_label.text = "code %d: %s" % [response_code,error_msg]
-			error_label.visible = true
+			error_label.text = "%s" % error_msg
+		else:
+			error_label.text = "an error has accured"
+		error_label.visible = true
 
 
 func _on_button_2_pressed() -> void:
-	get_tree().change_scene_to_packed(login)
+	get_tree().change_scene_to_file("res://scenes/Auth/login/Login.tscn")

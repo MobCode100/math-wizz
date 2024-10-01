@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cl0sgqb20h3mq"]
 
-[ext_resource type="Script" path="res://scenes/chapter/script/victory.gd" id="1_gew88"]
+[ext_resource type="Script" path="res://scenes/chapter/script/defeat.gd" id="1_mw7um"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="2_8gpe3"]
 [ext_resource type="PackedScene" uid="uid://bj6dstrcm0yks" path="res://scenes/map/background.tscn" id="2_40doh"]
 
@@ -12,7 +12,7 @@ font_size = 64
 font = ExtResource("2_8gpe3")
 
 [node name="Victory" type="Node2D"]
-script = ExtResource("1_gew88")
+script = ExtResource("1_mw7um")
 
 [node name="Background" parent="." instance=ExtResource("2_40doh")]
 

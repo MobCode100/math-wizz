@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://bouomv6fb47qg"]
+[gd_scene load_steps=30 format=4 uid="uid://bouomv6fb47qg"]
 
 [ext_resource type="Script" path="res://scenes/Main Menu/chapter select/chapter_select.gd" id="1_h674k"]
 [ext_resource type="Script" path="res://scenes/Main Menu/chapter select/chapter_select_main.gd" id="1_ks3qr"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://43sc3jjy8c20" path="res://scenes/UI element/button/Button.tscn" id="3_7b5y2"]
 [ext_resource type="PackedScene" uid="uid://jlv0wha67yt7" path="res://scenes/chapter/chapter 2.tscn" id="3_xv6hl"]
 [ext_resource type="PackedScene" uid="uid://bo3kmhb5k7vx1" path="res://scenes/chapter/chapter 3.tscn" id="4_7tv1d"]
+[ext_resource type="Texture2D" uid="uid://cm8ig2oxdx387" path="res://assets/01_Flat_Theme/Sprites/UI_Flat_ButtonArrow01a.png" id="4_ljetx"]
 [ext_resource type="Texture2D" uid="uid://bjt2oq7q4ecjv" path="res://assets/chapter image/Screenshot from 2024-09-30 22-24-03.png" id="5_4c7x8"]
 [ext_resource type="PackedScene" uid="uid://2jdbxas1vto0" path="res://scenes/chapter/chapter 4.tscn" id="5_uqvh4"]
 [ext_resource type="Texture2D" uid="uid://brokjdsd7hqxi" path="res://assets/chapter image/Screenshot from 2024-09-30 22-24-43.png" id="8_cr47v"]
@@ -393,7 +394,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(250, 150)
 layout_mode = 2
 text = "Chapter 1 
-+ Addition +"
+Addition"
 icon = ExtResource("5_4c7x8")
 vertical_icon_alignment = 0
 expand_icon = true
@@ -404,7 +405,7 @@ chapter = ExtResource("2_022am")
 custom_minimum_size = Vector2(250, 150)
 layout_mode = 2
 text = "Chapter 2 
-- Subtrction -"
+Subtrction"
 icon = ExtResource("8_cr47v")
 vertical_icon_alignment = 0
 expand_icon = true
@@ -415,7 +416,7 @@ chapter = ExtResource("3_xv6hl")
 custom_minimum_size = Vector2(250, 150)
 layout_mode = 2
 text = "Chapter 3
-x Multiplication x"
+Multiplication"
 icon = ExtResource("10_7rhwb")
 vertical_icon_alignment = 0
 expand_icon = true
@@ -426,9 +427,20 @@ chapter = ExtResource("4_7tv1d")
 custom_minimum_size = Vector2(250, 150)
 layout_mode = 2
 text = "Chapter 4 
-/ Division /"
+Division"
 icon = ExtResource("12_41xci")
 vertical_icon_alignment = 0
 expand_icon = true
 script = ExtResource("1_h674k")
 chapter = ExtResource("5_uqvh4")
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
+offset_left = 13.0
+offset_top = 16.0
+offset_right = 103.0
+offset_bottom = 97.0
+texture_normal = ExtResource("4_ljetx")
+stretch_mode = 5
+flip_h = true
+
+[connection signal="pressed" from="CanvasLayer/TextureButton" to="." method="_on_texture_button_pressed"]

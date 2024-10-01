@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bq7a0lr7ubebh"]
+[gd_scene load_steps=10 format=3 uid="uid://bq7a0lr7ubebh"]
 
 [ext_resource type="Script" path="res://scenes/Main Menu/admin/admin.gd" id="1_5an1n"]
 [ext_resource type="Script" path="res://addons/table_container/table_container.gd" id="1_jqf6l"]
+[ext_resource type="PackedScene" uid="uid://bj6dstrcm0yks" path="res://scenes/map/background.tscn" id="2_3v8jc"]
 [ext_resource type="PackedScene" uid="uid://43sc3jjy8c20" path="res://scenes/UI element/button/Button.tscn" id="3_skyd1"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="3_t2bmc"]
+[ext_resource type="Texture2D" uid="uid://bsm81frtrj8j2" path="res://assets/01_Flat_Theme/Style 1 Symbols (39).png" id="6_5fafs"]
 
 [sub_resource type="Theme" id="Theme_fmmi5"]
 default_font = ExtResource("3_t2bmc")
@@ -17,7 +19,14 @@ default_font = ExtResource("3_t2bmc")
 [node name="Admin" type="Node2D"]
 script = ExtResource("1_5an1n")
 
+[node name="Background" parent="." instance=ExtResource("2_3v8jc")]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1155.0
+offset_bottom = 644.0
+color = Color(0.00392157, 0.00392157, 0.00392157, 0.278431)
 
 [node name="AcceptDialog" type="AcceptDialog" parent="CanvasLayer"]
 initial_position = 1
@@ -80,6 +89,21 @@ text = "Delete"
 layout_mode = 2
 text = "Register"
 
+[node name="Button" parent="CanvasLayer" instance=ExtResource("3_skyd1")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -53.0
+offset_top = -37.0
+offset_right = -13.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+icon = ExtResource("6_5fafs")
+expand_icon = true
+
 [node name="FetchUsersList" type="HTTPRequest" parent="."]
 
 [node name="EditUser" type="HTTPRequest" parent="."]
@@ -91,6 +115,8 @@ text = "Register"
 [connection signal="confirmed" from="CanvasLayer/ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/MarginContainer/HBoxContainer/Edit" to="." method="_on_edit_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/MarginContainer/HBoxContainer/Delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/MarginContainer/HBoxContainer/Register" to="." method="_on_register_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
 [connection signal="request_completed" from="FetchUsersList" to="." method="_on_http_request_completed"]
 [connection signal="request_completed" from="EditUser" to="." method="_on_edit_user_request_completed"]
 [connection signal="request_completed" from="DeleteUser" to="." method="_on_delete_user_request_completed"]
