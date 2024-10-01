@@ -24,6 +24,7 @@ func table_contents(users: Array,table: TableContainer) -> void:
 		margin_cont.add_theme_constant_override("margin_left",margin_left_right)
 		margin_cont.add_theme_constant_override("margin_right",margin_left_right)
 		margin_cont.add_theme_constant_override("margin_bottom",15)
+		margin_cont.add_theme_constant_override("margin_top",15)
 		margin_cont.add_child(header_column)
 		header_row.add_child(margin_cont)
 		

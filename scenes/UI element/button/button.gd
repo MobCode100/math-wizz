@@ -9,7 +9,7 @@ func _ready() -> void:
 	$".".text = ""
 	if ($".".icon):
 		# 64.0/122.0 is the icon width percentage
-		$"RichTextLabel".add_image($".".icon,$".".size.x * (64.0/122.0))
+		$RichTextLabel.text += "[center][img=" + str($".".size.x * (64.0/122.0)) + "]" + $".".icon.resource_path + "[/img][/center]"
 		$".".icon = null
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
