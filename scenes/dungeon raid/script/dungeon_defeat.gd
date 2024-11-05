@@ -24,6 +24,10 @@ func timeout(point:int):
 func no_life(point:int):
 	points = point
 	cause_label.text = "DEFEAT"
+	
+func the_end(point:int):
+	points = point
+	cause_label.text = "GOOD JOB"
 
 func _on_button_pressed() -> void:
 		var main_menu_path = "res://scenes/Main Menu/Main Menu.tscn"

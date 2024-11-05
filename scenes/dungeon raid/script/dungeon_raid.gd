@@ -17,12 +17,18 @@ func _ready():
 func load_current_scene():
 	var scene = scene_selector.current_scene
 	print("load_current_scene")
-	scene_setup(scene)
+	if(scene == null): 
+		on_finished_dungeon()
+	else:
+		scene_setup(scene)
 	
 func load_next_scene():
 	var scene = scene_selector.get_next_scene()
-	print("load_next_scene")
-	scene_setup(scene)
+	if(scene == null): 
+		on_finished_dungeon()
+	else:
+		print("load_next_scene")
+		scene_setup(scene)
 		
 func scene_setup(scene:Node):
 	add_child(scene)
@@ -60,6 +66,13 @@ func on_player_died():
 	var defeat_instance = defeat_scene.instantiate()
 	add_child(defeat_instance)
 	defeat_instance.no_life(player_data['points'])
+	
+func on_finished_dungeon():
+	var player_data = free_scene_and_get_player_data()
+	update_player_high_score(player_data)
+	var defeat_instance = defeat_scene.instantiate()
+	add_child(defeat_instance)
+	defeat_instance.the_end(player_data['points'])
 
 func update_player_high_score(data:Dictionary):
 	var high_score = Session.player_data['highest_score']

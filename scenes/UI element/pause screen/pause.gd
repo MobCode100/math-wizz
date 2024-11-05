@@ -24,9 +24,12 @@ func _on_back_to_game_pressed() -> void:
 
 func _on_settings_pressed() -> void:
 	var pause_scene = $"."
+	var setting_button = $CenterContainer/VBoxContainer/Settings
+	#setting_button.queue_free()
 	var settings = settings_scene.instantiate()
 	settings.last_scene =  pause_scene
 	print("settings name:%s" % pause_scene.name)
+	#pause_scene.queue_free()
 	pause_scene.get_parent().add_child(settings)
 	pause_scene.get_parent().remove_child(pause_scene)
 	#add_child(settings)

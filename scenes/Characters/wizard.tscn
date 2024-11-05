@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://doj7qr6tw57i0"]
+[gd_scene load_steps=29 format=3 uid="uid://doj7qr6tw57i0"]
 
 [ext_resource type="Texture2D" uid="uid://cykhetrvil23v" path="res://assets/wizard char.png" id="1_bcis6"]
 [ext_resource type="Script" path="res://scenes/Characters/wizard.gd" id="1_k8p31"]
@@ -59,6 +59,9 @@ height = 22.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_8lpuh"]
 radius = 48.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_2rh6u"]
+font = ExtResource("5_f2u60")
+
 [sub_resource type="LabelSettings" id="LabelSettings_narmd"]
 font = ExtResource("5_f2u60")
 
@@ -111,14 +114,27 @@ editor_description = "HUD for player"
 visible = false
 script = ExtResource("4_fewoe")
 
-[node name="Health" type="Label" parent="UI"]
-visible = false
-offset_left = 212.0
-offset_top = -115.0
-offset_right = 255.0
-offset_bottom = -92.0
-theme_override_font_sizes/font_size = 10
-text = "lives ? / ?"
+[node name="HFlowContainer" type="HFlowContainer" parent="UI"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HFlowContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+
+[node name="Label" type="Label" parent="UI/HFlowContainer/MarginContainer"]
+layout_mode = 2
+text = "answer all the question"
+label_settings = SubResource("LabelSettings_2rh6u")
+
+[node name="MarginContainer2" type="MarginContainer" parent="UI/HFlowContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="Health Bar" parent="UI/HFlowContainer/MarginContainer2" instance=ExtResource("13_mkf34")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="UI"]
 anchors_preset = 1
@@ -133,15 +149,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "score : ???"
 label_settings = SubResource("LabelSettings_narmd")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI"]
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-
-[node name="Health Bar" parent="UI/MarginContainer" instance=ExtResource("13_mkf34")]
-layout_mode = 2
 
 [node name="question" type="Node2D" parent="UI"]
 

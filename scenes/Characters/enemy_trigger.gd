@@ -52,9 +52,15 @@ func generateOptions(option_len:int) -> Array[int] :
 			if (i == answer_position): answers.append(correct_answer)
 			else:
 				var offset = rng.randi_range(-question_range,question_range)
-				while((correct_answer + offset) <= 0 || (correct_answer + offset) in answers):
+				var option = int(correct_answer + offset)
+				# no negative number or duplicate
+				# but still has duplicate WHY?
+				# seems to only happen to correct answer
+				# bodge solution: check for correct answer
+				while(option <= 0 || option in answers || option == correct_answer):
 					offset = rng.randi_range(-question_range,question_range)
-				var false_answer = max(correct_answer + offset,0)
+					option = int(correct_answer + offset)
+				var false_answer = max(option,0)
 				answers.append(false_answer)
 		generatedOptions = answers
 	return generatedOptions

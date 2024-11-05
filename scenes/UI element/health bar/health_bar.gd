@@ -12,7 +12,7 @@ class_name  HealthBar
 		health = value
 		updateHealthTexture()
 		
-const SPRITE_SIZE = 16
+const SPRITE_SIZE = 32
 
 
 

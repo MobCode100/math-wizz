@@ -84,8 +84,7 @@ func _on_ready() -> void:
 @onready var question_ui:Node2D = $UI/question
 @onready var score_label:Label = $UI/MarginContainer2/Score
 @onready var confirm_button:Button = $UI/question/MarginContainer/confirm
-@onready var health_ui:Label = $UI/Health
-@onready var health_bar:HealthBar = $"UI/MarginContainer/Health Bar"
+@onready var health_bar:HealthBar = %"Health Bar"
 
 @export var MAX_HEALTH = 3
 

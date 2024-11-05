@@ -31,10 +31,11 @@ func table_contents(users: Array,table: TableContainer) -> void:
 		
 	table.add_child(header_row)
 	
-	for user in users:
+	for index in range(len(users)):
+		var user = users[index]
 		var row = HBoxContainer.new()
 		row.alignment = HBoxContainer.ALIGNMENT_CENTER
-		add_text_field(row,str(user["id"]))
+		add_text_field(row,str(index + 1))
 		add_text_field(row,user["username"])
 		add_text_field(row,user["name"])
 		add_text_field(row,user["password"])

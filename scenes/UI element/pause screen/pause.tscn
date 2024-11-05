@@ -29,15 +29,15 @@ text = "Back to game"
 layout_mode = 2
 text = "Settings"
 
-[node name="Main Menu" parent="CenterContainer/VBoxContainer" instance=ExtResource("1_82shr")]
-layout_mode = 2
-text = "Main Menu"
-
 [node name="restart" parent="CenterContainer/VBoxContainer" instance=ExtResource("1_82shr")]
 layout_mode = 2
 text = "Restart Chapter"
 
+[node name="Main Menu" parent="CenterContainer/VBoxContainer" instance=ExtResource("1_82shr")]
+layout_mode = 2
+text = "Main Menu"
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Back to Game" to="." method="_on_back_to_game_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
