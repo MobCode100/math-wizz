@@ -9,8 +9,7 @@ extends CanvasLayer
 @onready var question_ui:Node2D = $question
 @onready var score_label:Label = $MarginContainer2/Score
 @onready var confirm_button:Button = $question/MarginContainer/confirm
-@onready var health_ui:Label = $Health
-@onready var health_bar:HealthBar = $"MarginContainer/Health Bar"
+@onready var health_bar:HealthBar = %"Health Bar"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

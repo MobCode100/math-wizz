@@ -31,7 +31,7 @@ func _on_settings_pressed() -> void:
 	print("settings name:%s" % pause_scene.name)
 	#pause_scene.queue_free()
 	pause_scene.get_parent().add_child(settings)
-	pause_scene.get_parent().remove_child(pause_scene)
+	#pause_scene.get_parent().remove_child(pause_scene)
 	#add_child(settings)
 	
 

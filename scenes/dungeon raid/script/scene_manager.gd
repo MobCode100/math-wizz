@@ -15,7 +15,7 @@ func _ready() -> void:
 	current_scene = scene
 
 func get_random_scene_index():
-	if len(available_scene_index) == 1: return 
+	if len(available_scene_index) == 0: return 
 	var last_item_index = len(available_scene_index) - 1
 	var selected_scene_index = rng.randi_range(0,last_item_index)
 	var new_scene_index = available_scene_index[selected_scene_index]

@@ -21,11 +21,11 @@ func _ready() -> void:
 	updateTextures()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+#func _process(delta: float) -> void:
+	#pass
 
 
-func health_to_size(health:int): return health * SPRITE_SIZE
+func health_to_size(health_val:int): return health_val * SPRITE_SIZE
 
 func updateTextures():
 		updateMaxHealthTexture()

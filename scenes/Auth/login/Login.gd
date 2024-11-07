@@ -15,8 +15,8 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+#func _process(delta):
+	#pass
 
 
 func _on_button_pressed(): 
@@ -30,7 +30,7 @@ func _on_button_pressed():
 		})
 	)
 	
-func _on_request_completed(result, response_code, headers, body):
+func _on_request_completed(_result, response_code, _headers, body):
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	
 	if(response_code == 200):

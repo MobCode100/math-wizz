@@ -11,7 +11,6 @@ var next_scene:PackedScene
 @onready var point_label = %point
 @onready var exit_button = %Button
 @onready var cause_label = %cause
-@onready var score_service = %"score service"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	point_label.text = "%d points" % points
@@ -37,8 +36,8 @@ func _on_button_pressed() -> void:
 			get_tree().change_scene_to_packed(next_scene)
 
 #
-func post_score(point:int):
-	pass
+#func post_score(point:int):
+	#pass
 	
 
 

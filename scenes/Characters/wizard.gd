@@ -17,7 +17,6 @@ signal answer_change(answer:int)
 signal died
 signal score_updated
 signal health_updated
-var HEART_SPRITE = load("res://assets/heart.png")
 
 var time_keeper:Timer
 @onready var time_label = %"Time Left"

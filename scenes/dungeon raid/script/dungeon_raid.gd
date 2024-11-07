@@ -1,7 +1,7 @@
 extends Node
 
 
-@onready var player_data = %"Player Data"
+@onready var player_data_node = %"Player Data"
 @onready var scene_selector = %"Scene Selector"
 @onready var time_keeper = %"Time Keeper"
 @onready var api = $"score service"
@@ -14,27 +14,30 @@ func _ready():
 	load_current_scene()
 	time_keeper.time_left
 
+
+func load_scene(scene):
+	if(scene == null): 
+		on_finished_dungeon()
+	else:
+		call_deferred("scene_setup",scene)
+		#scene_setup(scene)
+	
 func load_current_scene():
 	var scene = scene_selector.current_scene
 	print("load_current_scene")
-	if(scene == null): 
-		on_finished_dungeon()
-	else:
-		scene_setup(scene)
+	load_scene(scene)
 	
 func load_next_scene():
 	var scene = scene_selector.get_next_scene()
-	if(scene == null): 
-		on_finished_dungeon()
-	else:
-		print("load_next_scene")
-		scene_setup(scene)
+	print("load_next_scene")
+	load_scene(scene)
 		
 func scene_setup(scene:Node):
 	add_child(scene)
+	#call_deferred("add_child",scene)
 	scene.connect("next_scene",self.on_next_scene)
 	scene.connect("player_died",on_player_died)
-	scene.init_player_data(player_data.player_data)
+	scene.init_player_data(player_data_node.player_data)
 	scene.give_timer_to_player(time_keeper)
 	
 func on_next_scene():
@@ -45,7 +48,7 @@ func on_next_scene():
 func update_player_data():
 	var scene = scene_selector.current_scene
 	var current_player_data = scene.get_player_data()
-	player_data.update_player_data(current_player_data)
+	player_data_node.update_player_data(current_player_data)
 
 func free_scene_and_get_player_data():
 	var scene = scene_selector.current_scene
@@ -90,7 +93,7 @@ func update_player_high_score(data:Dictionary):
 		})
 	)
 
-func _on_score_service_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
+func _on_score_service_request_completed(_result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	print(json)
 	print(response_code)

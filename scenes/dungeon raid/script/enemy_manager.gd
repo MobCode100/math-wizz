@@ -19,6 +19,10 @@ func _ready() -> void:
 		var second_number = generate_number()
 		if(operator == "/"):
 			first_number = dividable_number(first_number,second_number)
+		if(operator == "-"):
+			var numbers = avoid_minus_negative_answer(first_number,second_number)
+			first_number = numbers[0]
+			second_number = numbers[1]
 		enemy.operator = operator
 		enemy.first_number = first_number
 		enemy.second_number = second_number
@@ -33,9 +37,11 @@ func increase_gradual():
 	gradual_value = min(gradual_value + 1, question_max_range - GRADUAL_RANGE)
 
 func generate_gradual_number():
-	var number = rng.randi_range(gradual_value - GRADUAL_RANGE, gradual_value + GRADUAL_RANGE)
+	var lower_boundary = gradual_value - GRADUAL_RANGE
+	var upper_boundry = gradual_value + GRADUAL_RANGE
+	var number = rng.randi_range(lower_boundary, upper_boundry)
 	while number < question_min_range or number > question_max_range:
-		number = rng.randi_range(gradual_value - GRADUAL_RANGE, gradual_value + GRADUAL_RANGE)
+		number = rng.randi_range(lower_boundary, upper_boundry)
 	return number
 
 func generate_number_normal():
@@ -49,3 +55,9 @@ func generate_operator():
 
 func dividable_number(number1:int,number2:int):
 	return number1 * number2
+
+func avoid_minus_negative_answer(number1:int,number2:int):
+	if(number1 - number2 < 0):
+		return [number2,number1]
+	return [number1,number2]
+	

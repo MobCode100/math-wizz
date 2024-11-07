@@ -13,31 +13,31 @@ func _ready() -> void:
 		$".".icon = null
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+#func _process(delta: float) -> void:
+	#pass
 
 # temp remove position offset because button up does not run 
 
 func _on_button_down() -> void:
 	print($RichTextLabel.position.y)
-	#$RichTextLabel.position.y += 3
+	$RichTextLabel.position.y += 3
 	return
 
 func _on_button_up() -> void:
-	#if(hovered):
-		#$RichTextLabel.position.y -= 3
+	if(hovered):
+		$RichTextLabel.position.y -= 3
 	return
 
 func _on_mouse_entered() -> void:
-	#if(button_pressed):
-		#$RichTextLabel.position.y += 3
-	#$RichTextLabel.position.y += 1
-	#hovered = true
+	if(button_pressed):
+		$RichTextLabel.position.y += 3
+	$RichTextLabel.position.y += 1
+	hovered = true
 	return
 
 func _on_mouse_exited() -> void:
-	#if(button_pressed):
-		#$RichTextLabel.position.y -= 3
-	#$RichTextLabel.position.y -= 1
-	#hovered = false
+	if(button_pressed):
+		$RichTextLabel.position.y -= 3
+	$RichTextLabel.position.y -= 1
+	hovered = false
 	return
